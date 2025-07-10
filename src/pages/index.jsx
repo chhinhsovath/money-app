@@ -31,6 +31,9 @@ import ExpenseView from './expenses/ExpenseView'
 import VendorList from './vendors/VendorList'
 import VendorForm from './vendors/VendorForm'
 import VendorView from './vendors/VendorView'
+import TransactionList from './transactions/TransactionList'
+import TransactionForm from './transactions/TransactionForm'
+import TransactionView from './transactions/TransactionView'
 
 export default function AppRoutes() {
   return (
@@ -74,6 +77,10 @@ export default function AppRoutes() {
         <Route path="vendors/new" element={<VendorForm />} />
         <Route path="vendors/:id" element={<VendorView />} />
         <Route path="vendors/:id/edit" element={<VendorForm />} />
+        
+        <Route path="transactions" element={<TransactionList />} />
+        <Route path="transactions/:id" element={<TransactionView />} />
+        <Route path="transactions/:id/edit" element={<TransactionForm />} />
         
         <Route path="items" element={<div className="p-6">Products & Services Page</div>} />
         
