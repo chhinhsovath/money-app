@@ -1,0 +1,310 @@
+/**
+ * A4 Print Stylesheet
+ * Optimized for clean A4 paper formatting (210mm x 297mm)
+ * Applied to: Reports, Bills, Invoices, Quotes, Expenses, Vendor Details
+ */
+
+/* A4 Page Setup */
+@page {
+  size: A4 portrait;
+  margin: 15mm 10mm 15mm 10mm;
+  @top-left {
+    content: "MoneyApp - Financial Management";
+    font-size: 8pt;
+    color: #666;
+  }
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-size: 8pt;
+    color: #666;
+  }
+}
+
+/* Reset for print */
+@media print {
+  /* Page structure */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  html, body {
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+    font-family: 'Times New Roman', serif !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Hide non-essential elements */
+  .print\:hidden,
+  .no-print,
+  nav,
+  .navigation,
+  .sidebar,
+  button:not(.print-button),
+  .btn:not(.print-button),
+  .dropdown,
+  .tooltip,
+  .modal {
+    display: none !important;
+  }
+
+  /* Container optimization for A4 */
+  .container,
+  .main-content,
+  .print-container {
+    max-width: 190mm !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  /* Card components for print */
+  .card,
+  [class*="card"] {
+    border: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin-bottom: 8pt !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .card-header,
+  [class*="card-header"] {
+    background: #f8f9fa !important;
+    border-bottom: 1px solid #ddd !important;
+    padding: 6pt 8pt !important;
+    font-weight: bold !important;
+    font-size: 11pt !important;
+  }
+
+  .card-content,
+  [class*="card-content"] {
+    padding: 8pt !important;
+  }
+
+  /* Grid layouts optimized for A4 */
+  .grid,
+  [class*="grid"] {
+    display: block !important;
+  }
+
+  .grid > *,
+  [class*="grid"] > * {
+    width: 100% !important;
+    margin-bottom: 8pt !important;
+    break-inside: avoid !important;
+  }
+
+  /* Specific A4 grid optimizations */
+  .md\:grid-cols-2 > *,
+  .md\:grid-cols-3 > *,
+  .md\:grid-cols-4 > * {
+    width: 48% !important;
+    display: inline-block !important;
+    vertical-align: top !important;
+    margin-right: 2% !important;
+  }
+
+  .md\:grid-cols-4 > * {
+    width: 23% !important;
+    margin-right: 2% !important;
+  }
+
+  /* Table optimization for A4 */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 10pt !important;
+    margin-bottom: 12pt !important;
+    break-inside: avoid !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+    background: #f8f9fa !important;
+  }
+
+  th, td {
+    border: 1px solid #ddd !important;
+    padding: 4pt 6pt !important;
+    text-align: left !important;
+    vertical-align: top !important;
+  }
+
+  th {
+    font-weight: bold !important;
+    background: #f0f0f0 !important;
+  }
+
+  tbody tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Typography for A4 readability */
+  h1 {
+    font-size: 16pt !important;
+    font-weight: bold !important;
+    margin: 0 0 12pt 0 !important;
+    text-align: center !important;
+    break-after: avoid !important;
+  }
+
+  h2 {
+    font-size: 14pt !important;
+    font-weight: bold !important;
+    margin: 12pt 0 8pt 0 !important;
+    break-after: avoid !important;
+  }
+
+  h3 {
+    font-size: 12pt !important;
+    font-weight: bold !important;
+    margin: 8pt 0 4pt 0 !important;
+    break-after: avoid !important;
+  }
+
+  p {
+    margin: 0 0 6pt 0 !important;
+    orphans: 2 !important;
+    widows: 2 !important;
+  }
+
+  /* Spacing optimization */
+  .p-6 {
+    padding: 4pt !important;
+  }
+
+  .p-4 {
+    padding: 3pt !important;
+  }
+
+  .mb-6,
+  .mb-4 {
+    margin-bottom: 8pt !important;
+  }
+
+  .gap-6,
+  .gap-4 {
+    gap: 4pt !important;
+  }
+
+  /* Badge and status indicators */
+  .badge,
+  [class*="badge"] {
+    border: 1px solid #666 !important;
+    border-radius: 0 !important;
+    padding: 1pt 4pt !important;
+    font-size: 8pt !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Icons for print */
+  svg,
+  .icon {
+    width: 10pt !important;
+    height: 10pt !important;
+    fill: black !important;
+    stroke: black !important;
+  }
+
+  /* Financial amounts emphasis */
+  .currency,
+  .amount,
+  .total,
+  [class*="font-bold"] {
+    font-weight: bold !important;
+  }
+
+  /* Page breaks */
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .page-break-after {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .page-break-inside-avoid {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Vendor-specific optimizations */
+  .vendor-details {
+    max-width: 190mm !important;
+  }
+
+  .vendor-summary-cards {
+    display: block !important;
+  }
+
+  .vendor-summary-cards > * {
+    width: 48% !important;
+    display: inline-block !important;
+    vertical-align: top !important;
+    margin: 0 1% 8pt 0 !important;
+  }
+
+  /* Report-specific optimizations */
+  .report-header {
+    text-align: center !important;
+    margin-bottom: 16pt !important;
+    border-bottom: 2pt solid black !important;
+    padding-bottom: 8pt !important;
+  }
+
+  .report-summary {
+    margin-bottom: 12pt !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Invoice/Bill specific */
+  .invoice-header,
+  .bill-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-bottom: 16pt !important;
+  }
+
+  .invoice-details,
+  .bill-details {
+    margin-bottom: 12pt !important;
+  }
+
+  /* Expense report specific */
+  .expense-line-items {
+    margin-bottom: 12pt !important;
+  }
+
+  /* Print button styling */
+  .print-button {
+    display: none !important;
+  }
+
+  /* Ensure proper text color contrast */
+  .text-muted-foreground,
+  .text-secondary {
+    color: #555 !important;
+  }
+
+  /* Footer information */
+  .print-footer {
+    position: fixed !important;
+    bottom: 10mm !important;
+    left: 0 !important;
+    right: 0 !important;
+    text-align: center !important;
+    font-size: 8pt !important;
+    color: #666 !important;
+    border-top: 1pt solid #ddd !important;
+    padding-top: 4pt !important;
+  }
+}

@@ -202,7 +202,7 @@ export default function VendorView() {
   const billsSummary = calculateBillsSummary()
 
   return (
-    <div className="p-6 print:p-0">
+    <div className="p-6 print:p-0 print-container">
       <div className="mb-6 print:hidden">
         <Button
           variant="ghost"
@@ -269,7 +269,7 @@ export default function VendorView() {
           <p className="text-muted-foreground">{vendor.name}</p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 mb-6">
+        <div className="grid gap-6 md:grid-cols-2 mb-6 page-break-inside-avoid">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -365,7 +365,7 @@ export default function VendorView() {
           </Card>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-4 mb-6">
+        <div className="grid gap-6 md:grid-cols-4 mb-6 vendor-summary-cards">
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
@@ -485,7 +485,7 @@ export default function VendorView() {
                             {bill.status.charAt(0).toUpperCase() + bill.status.slice(1)}
                           </Badge>
                         </TableCell>
-                        <TableCell className="text-right font-medium">
+                        <TableCell className="text-right font-medium currency">
                           {formatCurrency(bill.total)}
                         </TableCell>
                         <TableCell className="print:hidden">
