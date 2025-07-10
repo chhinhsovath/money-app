@@ -26,6 +26,7 @@ export const AuthProvider = ({ children }) => {
       const response = await AuthService.getCurrentUser()
       setUser(response.user)
     } catch (error) {
+      console.log('Auth check failed:', error.message)
       setUser(null)
     } finally {
       setLoading(false)
@@ -64,6 +65,18 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
+  const updateProfile = async (profileData) => {
+    try {
+      // TODO: Implement profile update API call
+      console.log('Profile update:', profileData)
+      // For now, just update local user state
+      setUser(prev => ({ ...prev, ...profileData }))
+      return { success: true }
+    } catch (error) {
+      return { success: false, error: error.message }
+    }
+  }
+
   const value = {
     user,
     loading,
@@ -71,6 +84,7 @@ export const AuthProvider = ({ children }) => {
     register,
     logout,
     checkAuth,
+    updateProfile,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

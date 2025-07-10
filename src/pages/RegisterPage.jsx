@@ -33,7 +33,7 @@ export default function RegisterPage() {
         </div>
 
         <div className="text-blue-200 text-sm">
-          © 2025 AccounTech. All rights reserved.
+          © 2025 Sangapac. All rights reserved.
         </div>
       </div>
 
@@ -43,7 +43,7 @@ export default function RegisterPage() {
           <div className="mb-8">
             <div className="flex items-center gap-3 text-gray-900 lg:hidden mb-8">
               <Building2 className="h-10 w-10 text-blue-600" />
-              <span className="text-2xl font-bold">AccounTech</span>
+              <span className="text-2xl font-bold">Sangapac</span>
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Create your account</h1>
             <p className="text-gray-600 mt-2">
