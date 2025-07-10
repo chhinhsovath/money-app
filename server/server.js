@@ -23,11 +23,28 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true)
+    
+    // Allow localhost on any port
+    if (origin.startsWith('http://localhost:')) {
+      return callback(null, true)
+    }
+    
+    // For production, you would add your domain here
+    callback(new Error('Not allowed by CORS'))
+  },
   credentials: true
 }))
 app.use(express.json())
 app.use(cookieParser())
+
+// Request logging middleware
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`)
+  next()
+})
 
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
@@ -43,8 +60,20 @@ app.use('/api/expenses', expenseRoutes)
 app.use('/api/tax', taxRoutes)
 app.use('/api/database', databaseRoutes)
 
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() })
+})
+
 app.use(errorHandler)
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason)
+})
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`)
+  console.log(`Database: ${process.env.DB_NAME}@${process.env.DB_HOST}:${process.env.DB_PORT}`)
 })

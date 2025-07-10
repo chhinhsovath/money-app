@@ -69,6 +69,12 @@ router.post('/register', async (req, res, next) => {
 router.post('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body
+    
+    console.log('Login attempt for:', email)
+
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' })
+    }
 
     const result = await pool.query(
       'SELECT id, email, password_hash, first_name, last_name, organization_id, role FROM users WHERE email = $1',
