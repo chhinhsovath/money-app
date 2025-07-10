@@ -39,6 +39,7 @@ import SalesTaxReport from './tax-reports/SalesTaxReport'
 import IncomeTaxReport from './tax-reports/IncomeTaxReport'
 import TaxLiabilityReport from './tax-reports/TaxLiabilityReport'
 import TaxAuditTrail from './tax-reports/TaxAuditTrail'
+import TaxRatesManagement from './tax-reports/TaxRatesManagement'
 
 export default function AppRoutes() {
   return (
@@ -108,6 +109,7 @@ export default function AppRoutes() {
         <Route path="tax-reports/income-tax" element={<IncomeTaxReport />} />
         <Route path="tax-reports/liability" element={<TaxLiabilityReport />} />
         <Route path="tax-reports/audit-trail" element={<TaxAuditTrail />} />
+        <Route path="tax-reports/rates" element={<TaxRatesManagement />} />
         
         <Route path="accounts" element={<div className="p-6">Chart of Accounts Page</div>} />
       </Route>
