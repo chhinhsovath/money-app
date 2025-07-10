@@ -56,7 +56,8 @@ import {
   TrendingDown,
   Clock,
   CheckCircle,
-  XCircle
+  XCircle,
+  Eye
 } from 'lucide-react'
 import { useToast } from '@/components/ui/use-toast'
 
@@ -145,8 +146,8 @@ export default function VendorView() {
   }
 
   const calculateBillsSummary = () => {
-    const total = bills.reduce((sum, bill) => sum + (parseFloat(bill.total_amount) || 0), 0)
-    const pending = bills.filter(bill => bill.status === 'pending').length
+    const total = bills.reduce((sum, bill) => sum + (parseFloat(bill.total) || 0), 0)
+    const pending = bills.filter(bill => bill.status === 'approved' || bill.status === 'draft').length
     const paid = bills.filter(bill => bill.status === 'paid').length
     const overdue = bills.filter(bill => {
       if (bill.status === 'paid') return false
@@ -160,8 +161,8 @@ export default function VendorView() {
   const getBillStatusColor = (status) => {
     switch (status) {
       case 'draft': return 'secondary'
-      case 'pending': return 'default'
-      case 'paid': return 'success'
+      case 'approved': return 'default'
+      case 'paid': return 'default'
       case 'overdue': return 'destructive'
       default: return 'secondary'
     }
@@ -170,7 +171,7 @@ export default function VendorView() {
   const getBillStatusIcon = (status) => {
     switch (status) {
       case 'draft': return FileText
-      case 'pending': return Clock
+      case 'approved': return Clock
       case 'paid': return CheckCircle
       case 'overdue': return XCircle
       default: return FileText
@@ -485,7 +486,7 @@ export default function VendorView() {
                           </Badge>
                         </TableCell>
                         <TableCell className="text-right font-medium">
-                          {formatCurrency(bill.total_amount)}
+                          {formatCurrency(bill.total)}
                         </TableCell>
                         <TableCell className="print:hidden">
                           <Link to={`/bills/${bill.id}`}>
