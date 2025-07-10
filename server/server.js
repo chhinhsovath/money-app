@@ -13,6 +13,7 @@ import bankAccountRoutes from './routes/bankAccounts.js'
 import bankTransactionRoutes from './routes/bankTransactions.js'
 import reportRoutes from './routes/reports.js'
 import expenseRoutes from './routes/expenses.js'
+import taxRoutes from './routes/tax.js'
 import { errorHandler } from './middleware/errorHandler.js'
 
 dotenv.config()
@@ -38,6 +39,7 @@ app.use('/api/bank-accounts', bankAccountRoutes)
 app.use('/api/bank-transactions', bankTransactionRoutes)
 app.use('/api/reports', reportRoutes)
 app.use('/api/expenses', expenseRoutes)
+app.use('/api/tax', taxRoutes)
 
 app.use(errorHandler)
 
