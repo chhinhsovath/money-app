@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/select'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ArrowLeft, User, Building, Mail, Phone, MapPin, CreditCard } from 'lucide-react'
+import { useToast } from '@/components/ui/use-toast'
 
 const contactSchema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -34,6 +35,7 @@ const contactSchema = z.object({
 export default function ContactForm() {
   const navigate = useNavigate()
   const { id } = useParams()
+  const { toast } = useToast()
   const [loading, setLoading] = useState(false)
 
   const {
@@ -76,7 +78,12 @@ export default function ContactForm() {
       setValue('contact_person', data.contact_person || '')
       setValue('notes', data.notes || '')
     } catch (error) {
-      console.error('Error loading contact:', error)
+      toast({
+        title: 'Error',
+        description: 'Failed to load contact details. Please try again.',
+        variant: 'destructive',
+      })
+      navigate('/contacts')
     }
   }
 
@@ -96,12 +103,24 @@ export default function ContactForm() {
 
       if (id) {
         await ContactService.update(id, contactData)
+        toast({
+          title: 'Success',
+          description: 'Contact updated successfully.',
+        })
       } else {
         await ContactService.create(contactData)
+        toast({
+          title: 'Success',
+          description: 'Contact created successfully.',
+        })
       }
       navigate('/contacts')
     } catch (error) {
-      console.error('Error saving contact:', error)
+      toast({
+        title: 'Error',
+        description: error.message || 'Failed to save contact. Please try again.',
+        variant: 'destructive',
+      })
     } finally {
       setLoading(false)
     }

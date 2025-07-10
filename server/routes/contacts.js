@@ -53,14 +53,13 @@ router.post('/', authenticateToken, async (req, res, next) => {
       phone,
       address,
       tax_number,
-      contact_person,
-      notes
+      contact_person
     } = req.body
 
     const result = await pool.query(
       `INSERT INTO contacts 
-        (organization_id, name, type, email, phone, address, tax_number, contact_person, notes)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+        (organization_id, name, type, email, phone, address, tax_number, contact_person)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
       RETURNING *`,
       [
         req.user.organizationId,
@@ -70,8 +69,7 @@ router.post('/', authenticateToken, async (req, res, next) => {
         phone,
         address,
         tax_number,
-        contact_person,
-        notes
+        contact_person
       ]
     )
 
@@ -91,16 +89,15 @@ router.put('/:id', authenticateToken, async (req, res, next) => {
       phone,
       address,
       tax_number,
-      contact_person,
-      notes
+      contact_person
     } = req.body
 
     const result = await pool.query(
       `UPDATE contacts 
       SET name = $1, type = $2, email = $3, phone = $4, 
-          address = $5, tax_number = $6, contact_person = $7, notes = $8,
+          address = $5, tax_number = $6, contact_person = $7,
           updated_at = CURRENT_TIMESTAMP
-      WHERE id = $9 AND organization_id = $10
+      WHERE id = $8 AND organization_id = $9
       RETURNING *`,
       [
         name,
@@ -110,7 +107,6 @@ router.put('/:id', authenticateToken, async (req, res, next) => {
         address,
         tax_number,
         contact_person,
-        notes,
         req.params.id,
         req.user.organizationId
       ]

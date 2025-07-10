@@ -13,7 +13,7 @@ import {
   Download, 
   Printer, 
   FileSpreadsheet,
-  FilePdf,
+  FileText,
   Eye,
   EyeOff,
   Settings2,
@@ -389,7 +389,7 @@ export default function ReportBuilder({
                   className="w-full justify-start"
                   onClick={() => handleExport('pdf')}
                 >
-                  <FilePdf className="mr-2 h-4 w-4 text-red-600" />
+                  <FileText className="mr-2 h-4 w-4 text-red-600" />
                   Export as PDF
                 </Button>
                 <Button

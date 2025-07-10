@@ -4,14 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a comprehensive financial management web application built with React, Vite, and the Base44 SDK. It provides accounting and business management features including invoicing, expense tracking, banking, payroll, inventory management, and financial reporting.
+This is a comprehensive financial management web application built with React and Vite. It provides accounting and business management features including invoicing, expense tracking, banking, payroll, inventory management, and financial reporting. All data operations use local PostgreSQL database with Express.js API server.
 
 ## Development Commands
 
 ### Basic Commands
-- `npm install` - Install dependencies
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build for production
+- `npm install` - Install frontend dependencies
+- `npm run server:install` - Install backend dependencies
+- `npm run dev` - Start both frontend and backend servers concurrently
+- `npm run dev:client` - Start only the frontend (Vite) server
+- `npm run dev:server` - Start only the backend (Express) server
+- `npm run build` - Build frontend for production
 - `npm run preview` - Preview production build locally
 - `npm run lint` - Run ESLint code quality checks
 
@@ -166,10 +169,15 @@ The application uses a local JWT-based authentication system with PostgreSQL:
 ## Local Data Layer
 The application now uses PostgreSQL exclusively instead of external APIs:
 
-### Data Service
-- `src/services/LocalDataService.js` - Replaces Base44 SDK entities
-- `src/services/AccountingService.js` - Business logic for accounting operations
-- All data operations use the PostgreSQL database
+### Data Services
+- `src/services/api.js` - Core API client for HTTP requests
+- `src/services/AuthService.js` - Authentication operations
+- `src/services/InvoiceService.js` - Invoice management
+- `src/services/ContactService.js` - Contact management
+- `src/services/BillService.js` - Bill management
+- `src/services/BankAccountService.js` - Bank account operations
+- `src/services/ReportService.js` - Financial reporting
+- All data operations use the PostgreSQL database via Express.js API
 - Organization-scoped data access based on authenticated user
 
 ### Essential Commands - Development, build, and quality checks
@@ -188,7 +196,7 @@ The application now uses PostgreSQL exclusively instead of external APIs:
 - shadcn/ui built on Radix UI primitives
 - React Router DOM 7.2.0
 - React Hook Form 7.54.2 with Zod validation
-- Base44 SDK (@base44/sdk) for backend communication
+- Express.js 4.18.2 backend with PostgreSQL
 - Lucide React for icons
 - Recharts for data visualization
 - Context7 1.0.3 for documentation queries
@@ -216,7 +224,7 @@ Context7 can query documentation for: react, vite, tailwindcss, postgresql, node
   Essential Commands - Development, build, and quality checks
   Architecture Overview - Technology stack and project structureComponent Organization - Domain-based feature organization
   Routing System - React Router setup and URL patterns
-  API Integration - Base44 SDK configuration
+  API Integration - Local Express.js API with PostgreSQL
   Styling Approach - Tailwind CSS and shadcn/ui usage
   Development Patterns - Path aliases and component patterns
   Navigation Structure - Business and accounting sections

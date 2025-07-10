@@ -27,6 +27,7 @@ import {
 } from '@/components/ui/table'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Plus, Trash2, ArrowLeft } from 'lucide-react'
+import { useToast } from '@/components/ui/use-toast'
 
 const invoiceSchema = z.object({
   contact_id: z.string().min(1, 'Customer is required'),
@@ -51,6 +52,7 @@ export default function InvoiceForm() {
   const [loading, setLoading] = useState(false)
   const [contacts, setContacts] = useState([])
   const [invoice, setInvoice] = useState(null)
+  const { toast } = useToast()
   
   // Get contact from URL query params
   const searchParams = new URLSearchParams(window.location.search)
@@ -105,6 +107,11 @@ export default function InvoiceForm() {
       setContacts(data)
     } catch (error) {
       console.error('Error loading contacts:', error)
+      toast({
+        title: 'Error',
+        description: 'Failed to load customers',
+        variant: 'destructive'
+      })
     }
   }
 
@@ -131,6 +138,12 @@ export default function InvoiceForm() {
       }
     } catch (error) {
       console.error('Error loading invoice:', error)
+      toast({
+        title: 'Error',
+        description: 'Failed to load invoice',
+        variant: 'destructive'
+      })
+      navigate('/invoices')
     }
   }
 
@@ -139,12 +152,25 @@ export default function InvoiceForm() {
     try {
       if (id) {
         await InvoiceService.update(id, data)
+        toast({
+          title: 'Success',
+          description: 'Invoice updated successfully'
+        })
       } else {
         await InvoiceService.create(data)
+        toast({
+          title: 'Success',
+          description: 'Invoice created successfully'
+        })
       }
       navigate('/invoices')
     } catch (error) {
       console.error('Error saving invoice:', error)
+      toast({
+        title: 'Error',
+        description: error.message || 'Failed to save invoice',
+        variant: 'destructive'
+      })
     } finally {
       setLoading(false)
     }

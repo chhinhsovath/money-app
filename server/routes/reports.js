@@ -24,7 +24,7 @@ router.get('/profit-loss', authenticateToken, async (req, res, next) => {
       LEFT JOIN invoices i ON ili.invoice_id = i.id
       WHERE a.organization_id = $1
         AND a.type IN ('revenue', 'other_income')
-        AND i.invoice_date BETWEEN $2 AND $3
+        AND i.issue_date BETWEEN $2 AND $3
         AND i.status != 'draft'
       GROUP BY a.id, a.code, a.name
       ORDER BY a.code`,
@@ -42,7 +42,7 @@ router.get('/profit-loss', authenticateToken, async (req, res, next) => {
       LEFT JOIN bills b ON bli.bill_id = b.id
       WHERE a.organization_id = $1
         AND a.type IN ('expense', 'cost_of_goods_sold', 'other_expense')
-        AND b.bill_date BETWEEN $2 AND $3
+        AND b.issue_date BETWEEN $2 AND $3
         AND b.status != 'draft'
       GROUP BY a.id, a.code, a.name
       ORDER BY a.code`,
@@ -108,7 +108,7 @@ router.get('/balance-sheet', authenticateToken, async (req, res, next) => {
                 JOIN invoice_line_items ili ON inv.id = ili.invoice_id
                 WHERE inv.organization_id = $1
                   AND inv.status IN ('sent', 'overdue')
-                  AND inv.invoice_date <= $2
+                  AND inv.issue_date <= $2
                 GROUP BY inv.id
               ) i
             ), 0)
@@ -140,7 +140,7 @@ router.get('/balance-sheet', authenticateToken, async (req, res, next) => {
                 JOIN bill_line_items bli ON bill.id = bli.bill_id
                 WHERE bill.organization_id = $1
                   AND bill.status IN ('approved', 'overdue')
-                  AND bill.bill_date <= $2
+                  AND bill.issue_date <= $2
                 GROUP BY bill.id
               ) b
             ), 0)
@@ -272,7 +272,7 @@ router.get('/aged-receivables', authenticateToken, async (req, res, next) => {
       `SELECT 
         i.id,
         i.invoice_number,
-        i.invoice_date,
+        i.issue_date,
         i.due_date,
         c.name as contact_name,
         SUM(ili.quantity * ili.unit_price + ili.tax_amount) as total,
@@ -334,7 +334,7 @@ router.get('/aged-payables', authenticateToken, async (req, res, next) => {
       `SELECT 
         b.id,
         b.bill_number,
-        b.bill_date,
+        b.issue_date,
         b.due_date,
         c.name as contact_name,
         SUM(bli.quantity * bli.unit_price + bli.tax_amount) as total,

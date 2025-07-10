@@ -12,17 +12,41 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog'
+import {
   Plus,
   Building,
   TrendingUp,
   TrendingDown,
   DollarSign,
   Activity,
+  MoreHorizontal,
+  Eye,
+  Edit,
+  Trash,
 } from 'lucide-react'
 
 export default function BankAccountList() {
   const [accounts, setAccounts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [deleteAccount, setDeleteAccount] = useState(null)
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false)
 
   useEffect(() => {
     loadAccounts()
@@ -56,6 +80,19 @@ export default function BankAccountList() {
 
   const getNegativeAccounts = () => {
     return accounts.filter(account => parseFloat(account.current_balance) < 0)
+  }
+
+  const handleDelete = async () => {
+    if (!deleteAccount) return
+    
+    try {
+      await BankAccountService.delete(deleteAccount.id)
+      setAccounts(accounts.filter(acc => acc.id !== deleteAccount.id))
+      setShowDeleteDialog(false)
+      setDeleteAccount(null)
+    } catch (error) {
+      console.error('Error deleting bank account:', error)
+    }
   }
 
   if (loading) {
@@ -167,15 +204,15 @@ export default function BankAccountList() {
         ) : (
           accounts.map((account) => (
             <Card key={account.id} className="hover:shadow-lg transition-shadow">
-              <Link to={`/bank-accounts/${account.id}`}>
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle>{account.name}</CardTitle>
-                      <p className="text-sm text-muted-foreground">
-                        {account.code} • {account.description}
-                      </p>
-                    </div>
+              <CardHeader>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <CardTitle>{account.name}</CardTitle>
+                    <p className="text-sm text-muted-foreground">
+                      {account.code} • {account.description}
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
                     <div className="text-right">
                       <p className="text-2xl font-bold">
                         {formatCurrency(account.current_balance)}
@@ -184,26 +221,79 @@ export default function BankAccountList() {
                         Current Balance
                       </p>
                     </div>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon" className="h-8 w-8">
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <Link to={`/bank-accounts/${account.id}`}>
+                          <DropdownMenuItem>
+                            <Eye className="mr-2 h-4 w-4" />
+                            View Details
+                          </DropdownMenuItem>
+                        </Link>
+                        <Link to={`/bank-accounts/${account.id}/edit`}>
+                          <DropdownMenuItem>
+                            <Edit className="mr-2 h-4 w-4" />
+                            Edit
+                          </DropdownMenuItem>
+                        </Link>
+                        <DropdownMenuItem
+                          className="text-destructive"
+                          onClick={() => {
+                            setDeleteAccount(account)
+                            setShowDeleteDialog(true)
+                          }}
+                        >
+                          <Trash className="mr-2 h-4 w-4" />
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-4 text-sm">
-                      <span className={`flex items-center gap-1 ${account.is_active ? 'text-green-600' : 'text-red-600'}`}>
-                        <div className={`w-2 h-2 rounded-full ${account.is_active ? 'bg-green-600' : 'bg-red-600'}`} />
-                        {account.is_active ? 'Active' : 'Inactive'}
-                      </span>
-                    </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-4 text-sm">
+                    <span className={`flex items-center gap-1 ${account.is_active ? 'text-green-600' : 'text-red-600'}`}>
+                      <div className={`w-2 h-2 rounded-full ${account.is_active ? 'bg-green-600' : 'bg-red-600'}`} />
+                      {account.is_active ? 'Active' : 'Inactive'}
+                    </span>
+                  </div>
+                  <Link to={`/bank-accounts/${account.id}`}>
                     <Button variant="outline" size="sm">
                       View Transactions
                     </Button>
-                  </div>
-                </CardContent>
-              </Link>
+                  </Link>
+                </div>
+              </CardContent>
             </Card>
           ))
         )}
       </div>
+
+      <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Bank Account</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete "{deleteAccount?.name}"? This action cannot be undone.
+              All associated transactions will also be deleted.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDelete} className="bg-destructive text-destructive-foreground">
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   )
 }

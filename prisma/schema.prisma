@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  users     User[]
+  accounts  Account[]
+  contacts  Contact[]
+  invoices  Invoice[]
+  bills     Bill[]
+  items     Item[]
+}
+
+model User {
+  id             String       @id @default(cuid())
+  email          String       @unique
+  passwordHash   String
+  firstName      String?
+  lastName       String?
+  role           String       @default("user")
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  
+  @@index([organizationId])
+}
+
+model Account {
+  id             String       @id @default(cuid())
+  name           String
+  code           String
+  type           String
+  description    String?
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  
+  @@index([organizationId])
+}
+
+model Contact {
+  id             String       @id @default(cuid())
+  name           String
+  email          String?
+  phone          String?
+  type           String       // 'customer' or 'supplier'
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  
+  invoices       Invoice[]
+  bills          Bill[]
+  
+  @@index([organizationId])
+}
+
+model Invoice {
+  id             String       @id @default(cuid())
+  invoiceNumber  String
+  contactId      String
+  contact        Contact      @relation(fields: [contactId], references: [id])
+  invoiceDate    DateTime
+  dueDate        DateTime
+  status         String       @default("draft")
+  subtotal       Decimal      @default(0)
+  taxAmount      Decimal      @default(0)
+  total          Decimal      @default(0)
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  
+  lineItems      InvoiceLineItem[]
+  
+  @@index([organizationId])
+  @@index([contactId])
+}
+
+model InvoiceLineItem {
+  id          String  @id @default(cuid())
+  invoiceId   String
+  invoice     Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  description String
+  quantity    Decimal
+  unitPrice   Decimal
+  amount      Decimal
+  
+  @@index([invoiceId])
+}
+
+model Bill {
+  id             String       @id @default(cuid())
+  billNumber     String
+  contactId      String
+  contact        Contact      @relation(fields: [contactId], references: [id])
+  billDate       DateTime
+  dueDate        DateTime
+  status         String       @default("draft")
+  subtotal       Decimal      @default(0)
+  taxAmount      Decimal      @default(0)
+  total          Decimal      @default(0)
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  
+  lineItems      BillLineItem[]
+  
+  @@index([organizationId])
+  @@index([contactId])
+}
+
+model BillLineItem {
+  id          String  @id @default(cuid())
+  billId      String
+  bill        Bill    @relation(fields: [billId], references: [id], onDelete: Cascade)
+  description String
+  quantity    Decimal
+  unitPrice   Decimal
+  amount      Decimal
+  
+  @@index([billId])
+}
+
+model Item {
+  id             String       @id @default(cuid())
+  name           String
+  description    String?
+  code           String?
+  type           String       // 'product' or 'service'
+  unitPrice      Decimal?
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  
+  @@index([organizationId])
+}

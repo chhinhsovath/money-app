@@ -28,6 +28,7 @@ import {
 } from '@/components/ui/table'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Plus, Trash2, ArrowLeft, Receipt } from 'lucide-react'
+import { useToast } from '@/components/ui/use-toast'
 
 const billSchema = z.object({
   contact_id: z.string().min(1, 'Supplier is required'),
@@ -49,6 +50,7 @@ const billSchema = z.object({
 export default function BillForm() {
   const navigate = useNavigate()
   const { id } = useParams()
+  const { toast } = useToast()
   const [loading, setLoading] = useState(false)
   const [contacts, setContacts] = useState([])
   const [accounts, setAccounts] = useState([])
@@ -110,7 +112,11 @@ export default function BillForm() {
       setContacts(contactsData)
       setAccounts(accountsData)
     } catch (error) {
-      console.error('Error loading data:', error)
+      toast({
+        title: 'Error',
+        description: 'Failed to load data. Please try again.',
+        variant: 'destructive',
+      })
     }
   }
 
@@ -136,7 +142,12 @@ export default function BillForm() {
         })))
       }
     } catch (error) {
-      console.error('Error loading bill:', error)
+      toast({
+        title: 'Error',
+        description: 'Failed to load bill details. Please try again.',
+        variant: 'destructive',
+      })
+      navigate('/bills')
     }
   }
 
@@ -150,12 +161,24 @@ export default function BillForm() {
       
       if (id) {
         await BillService.update(id, billData)
+        toast({
+          title: 'Success',
+          description: 'Bill updated successfully.',
+        })
       } else {
         await BillService.create(billData)
+        toast({
+          title: 'Success',
+          description: 'Bill created successfully.',
+        })
       }
       navigate('/bills')
     } catch (error) {
-      console.error('Error saving bill:', error)
+      toast({
+        title: 'Error',
+        description: error.message || 'Failed to save bill. Please try again.',
+        variant: 'destructive',
+      })
     } finally {
       setLoading(false)
     }

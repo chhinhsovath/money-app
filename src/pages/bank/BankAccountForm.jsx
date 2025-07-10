@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -22,11 +22,15 @@ const bankAccountSchema = z.object({
 
 export default function BankAccountForm() {
   const navigate = useNavigate()
+  const { id } = useParams()
   const [loading, setLoading] = useState(false)
+  const [initialLoading, setInitialLoading] = useState(false)
+  const isEdit = !!id
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(bankAccountSchema),
@@ -40,16 +44,56 @@ export default function BankAccountForm() {
     },
   })
 
+  useEffect(() => {
+    if (isEdit) {
+      loadBankAccount()
+    }
+  }, [id])
+
+  const loadBankAccount = async () => {
+    setInitialLoading(true)
+    try {
+      const account = await BankAccountService.getById(id)
+      reset({
+        code: account.code || '',
+        name: account.name || '',
+        bank_name: account.bank_name || '',
+        account_number: account.account_number || '',
+        description: account.description || '',
+        opening_balance: account.opening_balance || 0,
+      })
+    } catch (error) {
+      console.error('Error loading bank account:', error)
+    } finally {
+      setInitialLoading(false)
+    }
+  }
+
   const onSubmit = async (data) => {
     setLoading(true)
     try {
-      await BankAccountService.create(data)
+      if (isEdit) {
+        await BankAccountService.update(id, data)
+      } else {
+        await BankAccountService.create(data)
+      }
       navigate('/bank-accounts')
     } catch (error) {
-      console.error('Error creating bank account:', error)
+      console.error(`Error ${isEdit ? 'updating' : 'creating'} bank account:`, error)
     } finally {
       setLoading(false)
     }
+  }
+
+  if (initialLoading) {
+    return (
+      <div className="p-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
+          <div className="h-64 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -63,7 +107,7 @@ export default function BankAccountForm() {
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Bank Accounts
         </Button>
-        <h1 className="text-3xl font-bold">New Bank Account</h1>
+        <h1 className="text-3xl font-bold">{isEdit ? 'Edit' : 'New'} Bank Account</h1>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-2xl">
@@ -154,12 +198,12 @@ export default function BankAccountForm() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <DollarSign className="h-5 w-5" />
-              Opening Balance
+              {isEdit ? 'Current Balance' : 'Opening Balance'}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div>
-              <Label htmlFor="opening_balance">Opening Balance</Label>
+              <Label htmlFor="opening_balance">{isEdit ? 'Balance' : 'Opening Balance'}</Label>
               <Input
                 id="opening_balance"
                 type="number"
@@ -168,7 +212,10 @@ export default function BankAccountForm() {
                 placeholder="0.00"
               />
               <p className="text-sm text-muted-foreground mt-1">
-                Enter the current balance to start tracking from today
+                {isEdit 
+                  ? 'Update the current balance'
+                  : 'Enter the current balance to start tracking from today'
+                }
               </p>
             </div>
           </CardContent>
@@ -183,7 +230,10 @@ export default function BankAccountForm() {
             Cancel
           </Button>
           <Button type="submit" disabled={loading}>
-            {loading ? 'Creating...' : 'Create Bank Account'}
+            {loading 
+              ? (isEdit ? 'Updating...' : 'Creating...') 
+              : (isEdit ? 'Update Bank Account' : 'Create Bank Account')
+            }
           </Button>
         </div>
       </form>

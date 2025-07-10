@@ -22,6 +22,7 @@ import BalanceSheetReport from './reports/BalanceSheetReport'
 import CashFlowReport from './reports/CashFlowReport'
 import AgedReceivablesReport from './reports/AgedReceivablesReport'
 import AgedPayablesReport from './reports/AgedPayablesReport'
+import CustomReportBuilder from './reports/CustomReportBuilder'
 
 export default function AppRoutes() {
   return (
@@ -63,6 +64,7 @@ export default function AppRoutes() {
         <Route path="bank-accounts" element={<BankAccountList />} />
         <Route path="bank-accounts/new" element={<BankAccountForm />} />
         <Route path="bank-accounts/:id" element={<BankAccountView />} />
+        <Route path="bank-accounts/:id/edit" element={<BankAccountForm />} />
         <Route path="bank-transactions/new" element={<BankTransactionForm />} />
         
         <Route path="reports" element={<ReportsList />} />
@@ -71,6 +73,7 @@ export default function AppRoutes() {
         <Route path="reports/cash-flow" element={<CashFlowReport />} />
         <Route path="reports/aged-receivables" element={<AgedReceivablesReport />} />
         <Route path="reports/aged-payables" element={<AgedPayablesReport />} />
+        <Route path="reports/custom" element={<CustomReportBuilder />} />
         
         <Route path="accounts" element={<div className="p-6">Chart of Accounts Page</div>} />
       </Route>

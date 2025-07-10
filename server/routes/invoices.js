@@ -20,7 +20,7 @@ router.get('/', authenticateToken, async (req, res, next) => {
       LEFT JOIN invoice_line_items ili ON i.id = ili.invoice_id
       WHERE i.organization_id = $1
       GROUP BY i.id, c.id
-      ORDER BY i.invoice_date DESC`,
+      ORDER BY i.issue_date DESC`,
       [req.user.organizationId]
     )
     res.json(result.rows)

@@ -16,6 +16,10 @@ class BankAccountService {
   async update(id, bankAccount) {
     return api.put(`/bank-accounts/${id}`, bankAccount)
   }
+
+  async delete(id) {
+    return api.delete(`/bank-accounts/${id}`)
+  }
 }
 
 export default new BankAccountService()
