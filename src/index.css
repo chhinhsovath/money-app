@@ -123,3 +123,48 @@
     }
   }
 }
+
+/* Print Styles */
+@media print {
+  @page {
+    size: A4;
+    margin: 20mm;
+  }
+
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Hide navigation and unnecessary elements */
+  nav, aside, header, footer {
+    display: none !important;
+  }
+
+  /* Ensure content fits on page */
+  .invoice-view {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Prevent page breaks inside elements */
+  table, tr, td, th {
+    page-break-inside: avoid;
+  }
+
+  /* Better table printing */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+}

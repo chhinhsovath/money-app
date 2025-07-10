@@ -6,6 +6,7 @@ import RegisterPage from './RegisterPage'
 import Dashboard from './Dashboard'
 import InvoiceList from './invoices/InvoiceList'
 import InvoiceForm from './invoices/InvoiceForm'
+import InvoiceView from './invoices/InvoiceView'
 import ContactList from './contacts/ContactList'
 import ContactForm from './contacts/ContactForm'
 import ContactView from './contacts/ContactView'
@@ -23,6 +24,13 @@ import CashFlowReport from './reports/CashFlowReport'
 import AgedReceivablesReport from './reports/AgedReceivablesReport'
 import AgedPayablesReport from './reports/AgedPayablesReport'
 import CustomReportBuilder from './reports/CustomReportBuilder'
+import Analytics from './Analytics'
+import ExpenseList from './expenses/ExpenseList'
+import ExpenseForm from './expenses/ExpenseForm'
+import ExpenseView from './expenses/ExpenseView'
+import VendorList from './vendors/VendorList'
+import VendorForm from './vendors/VendorForm'
+import VendorView from './vendors/VendorView'
 
 export default function AppRoutes() {
   return (
@@ -40,10 +48,11 @@ export default function AppRoutes() {
       >
         <Route index element={<Navigate to="/dashboard" replace />} />
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="analytics" element={<Analytics />} />
         
         <Route path="invoices" element={<InvoiceList />} />
         <Route path="invoices/new" element={<InvoiceForm />} />
-        <Route path="invoices/:id" element={<div className="p-6">Invoice View</div>} />
+        <Route path="invoices/:id" element={<InvoiceView />} />
         <Route path="invoices/:id/edit" element={<InvoiceForm />} />
         
         <Route path="bills" element={<BillList />} />
@@ -51,13 +60,20 @@ export default function AppRoutes() {
         <Route path="bills/:id" element={<BillView />} />
         <Route path="bills/:id/edit" element={<BillForm />} />
         
-        <Route path="expenses" element={<div className="p-6">Expenses Page</div>} />
-        <Route path="expenses/new" element={<div className="p-6">New Expense</div>} />
+        <Route path="expenses" element={<ExpenseList />} />
+        <Route path="expenses/new" element={<ExpenseForm />} />
+        <Route path="expenses/:id" element={<ExpenseView />} />
+        <Route path="expenses/:id/edit" element={<ExpenseForm />} />
         
         <Route path="contacts" element={<ContactList />} />
         <Route path="contacts/new" element={<ContactForm />} />
         <Route path="contacts/:id" element={<ContactView />} />
         <Route path="contacts/:id/edit" element={<ContactForm />} />
+        
+        <Route path="vendors" element={<VendorList />} />
+        <Route path="vendors/new" element={<VendorForm />} />
+        <Route path="vendors/:id" element={<VendorView />} />
+        <Route path="vendors/:id/edit" element={<VendorForm />} />
         
         <Route path="items" element={<div className="p-6">Products & Services Page</div>} />
         

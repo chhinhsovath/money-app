@@ -11,16 +11,11 @@ router.get('/', authenticateToken, async (req, res, next) => {
       `SELECT 
         b.*,
         c.name as contact_name,
-        c.email as contact_email,
-        COALESCE(SUM(bli.quantity * bli.unit_price), 0) as subtotal,
-        COALESCE(SUM(bli.tax_amount), 0) as tax_total,
-        COALESCE(SUM(bli.quantity * bli.unit_price + bli.tax_amount), 0) as total
+        c.email as contact_email
       FROM bills b
       LEFT JOIN contacts c ON b.contact_id = c.id
-      LEFT JOIN bill_line_items bli ON b.id = bli.bill_id
       WHERE b.organization_id = $1
-      GROUP BY b.id, c.id
-      ORDER BY b.bill_date DESC`,
+      ORDER BY b.issue_date DESC`,
       [req.user.organizationId]
     )
     res.json(result.rows)

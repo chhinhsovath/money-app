@@ -228,10 +228,10 @@ export default function BillList() {
                     </TableCell>
                     <TableCell>{bill.contact_name || '-'}</TableCell>
                     <TableCell>
-                      {format(new Date(bill.bill_date), 'MMM d, yyyy')}
+                      {bill.issue_date ? format(new Date(bill.issue_date), 'MMM d, yyyy') : '-'}
                     </TableCell>
                     <TableCell>
-                      {format(new Date(bill.due_date), 'MMM d, yyyy')}
+                      {bill.due_date ? format(new Date(bill.due_date), 'MMM d, yyyy') : '-'}
                     </TableCell>
                     <TableCell>
                       <Badge 

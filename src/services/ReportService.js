@@ -1,8 +1,13 @@
 import api from './api'
 
 class ReportService {
-  async getProfitLoss(startDate, endDate) {
-    return api.get(`/reports/profit-loss?start_date=${startDate}&end_date=${endDate}`)
+  async getProfitLoss(dateRange) {
+    // Handle both object and individual parameters
+    if (typeof dateRange === 'object' && dateRange.startDate && dateRange.endDate) {
+      return api.get(`/reports/profit-loss?start_date=${dateRange.startDate}&end_date=${dateRange.endDate}`)
+    }
+    // Fallback for direct date parameters
+    return api.get(`/reports/profit-loss?start_date=${dateRange}&end_date=${arguments[1]}`)
   }
 
   async getBalanceSheet(asOfDate) {
