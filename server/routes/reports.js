@@ -276,7 +276,7 @@ router.get('/aged-receivables', authenticateToken, async (req, res, next) => {
         i.due_date,
         c.name as contact_name,
         SUM(ili.quantity * ili.unit_price + ili.tax_amount) as total,
-        EXTRACT(DAY FROM CURRENT_DATE - i.due_date) as days_overdue
+        (CURRENT_DATE - i.due_date) as days_overdue
       FROM invoices i
       JOIN contacts c ON i.contact_id = c.id
       JOIN invoice_line_items ili ON i.id = ili.invoice_id
@@ -338,7 +338,7 @@ router.get('/aged-payables', authenticateToken, async (req, res, next) => {
         b.due_date,
         c.name as contact_name,
         SUM(bli.quantity * bli.unit_price + bli.tax_amount) as total,
-        EXTRACT(DAY FROM CURRENT_DATE - b.due_date) as days_overdue
+        (CURRENT_DATE - b.due_date) as days_overdue
       FROM bills b
       JOIN contacts c ON b.contact_id = c.id
       JOIN bill_line_items bli ON b.id = bli.bill_id

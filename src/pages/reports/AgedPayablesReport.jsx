@@ -18,7 +18,7 @@ export default function AgedPayablesReport() {
     try {
       setLoading(true)
       const response = await reportService.getAgedPayables()
-      setReport(response.data)
+      setReport(response)
     } catch (error) {
       toast({
         title: 'Error',

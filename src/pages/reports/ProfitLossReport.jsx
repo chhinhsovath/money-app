@@ -29,8 +29,9 @@ export default function ProfitLossReport() {
     try {
       setLoading(true)
       const response = await reportService.getProfitLoss(startDate, endDate)
-      setReport(response.data)
+      setReport(response)
     } catch (error) {
+      console.error('Error fetching P&L report:', error)
       toast({
         title: 'Error',
         description: 'Failed to fetch profit & loss report',

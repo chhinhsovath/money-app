@@ -27,7 +27,7 @@ export default function CashFlowReport() {
     try {
       setLoading(true)
       const response = await reportService.getCashFlow(startDate, endDate)
-      setReport(response.data)
+      setReport(response)
     } catch (error) {
       toast({
         title: 'Error',

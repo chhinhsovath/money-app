@@ -20,7 +20,7 @@ export default function BalanceSheetReport() {
     try {
       setLoading(true)
       const response = await reportService.getBalanceSheet(asOfDate)
-      setReport(response.data)
+      setReport(response)
     } catch (error) {
       toast({
         title: 'Error',

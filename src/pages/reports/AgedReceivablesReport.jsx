@@ -18,7 +18,7 @@ export default function AgedReceivablesReport() {
     try {
       setLoading(true)
       const response = await reportService.getAgedReceivables()
-      setReport(response.data)
+      setReport(response)
     } catch (error) {
       toast({
         title: 'Error',
