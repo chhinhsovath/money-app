@@ -1,0 +1,42 @@
+{
+  "timestamp": "2025-07-10T08:53:51.267Z",
+  "baseUrl": "http://localhost:3002",
+  "scenarios": [
+    {
+      "name": "User Login",
+      "scenarios": [],
+      "error": "No element found for selector: button[type=\"submit\"]"
+    },
+    {
+      "name": "Invoice Creation",
+      "scenarios": [],
+      "error": "No element found for selector: input[name=\"email\"]"
+    },
+    {
+      "name": "Responsive Design",
+      "scenarios": [
+        {
+          "name": "mobile view (375x667)",
+          "status": "success",
+          "screenshot": "tests/evidence/2025-07-10T08-53-46.748Z_responsive-mobile.png"
+        },
+        {
+          "name": "tablet view (768x1024)",
+          "status": "success",
+          "screenshot": "tests/evidence/2025-07-10T08-53-48.903Z_responsive-tablet.png"
+        },
+        {
+          "name": "desktop view (1920x1080)",
+          "status": "success",
+          "screenshot": "tests/evidence/2025-07-10T08-53-51.092Z_responsive-desktop.png"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "success": 3,
+    "error": 0,
+    "tested": 0
+  }
+}

@@ -1,0 +1,16 @@
+"use strict";(()=>{var e={};e.id=428,e.ids=[428],e.modules={399:e=>{e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},517:e=>{e.exports=require("next/dist/compiled/next-server/app-route.runtime.prod.js")},4300:e=>{e.exports=require("buffer")},6113:e=>{e.exports=require("crypto")},2781:e=>{e.exports=require("stream")},3837:e=>{e.exports=require("util")},8544:(e,t,r)=>{r.r(t),r.d(t,{originalPathname:()=>v,patchFetch:()=>x,requestAsyncStorage:()=>m,routeModule:()=>d,serverHooks:()=>R,staticGenerationAsyncStorage:()=>T});var s={};r.r(s),r.d(s,{GET:()=>p,POST:()=>l});var o=r(9303),n=r(8716),a=r(670),i=r(7070),c=r(8784),u=r(5456);async function p(e){try{let t=await (0,u.R)(e);if(!t)return i.NextResponse.json({message:"Unauthorized"},{status:401});let r=await c.Z.query(`SELECT c.*, 
+        COUNT(DISTINCT i.id) as invoice_count,
+        COUNT(DISTINCT b.id) as bill_count,
+        COALESCE(SUM(DISTINCT i.total), 0) as total_revenue,
+        COALESCE(SUM(DISTINCT b.total), 0) as total_expenses
+      FROM contacts c
+      LEFT JOIN invoices i ON c.id = i.contact_id
+      LEFT JOIN bills b ON c.id = b.contact_id
+      WHERE c.organization_id = $1
+      GROUP BY c.id
+      ORDER BY c.name`,[t.organizationId]);return i.NextResponse.json(r.rows)}catch(e){return console.error("Get contacts error:",e),i.NextResponse.json({message:"Internal server error"},{status:500})}}async function l(e){try{let t=await (0,u.R)(e);if(!t)return i.NextResponse.json({message:"Unauthorized"},{status:401});let{name:r,email:s,phone:o,type:n,taxNumber:a,address:p,contactPerson:l,notes:d}=await e.json(),m=await c.Z.query(`INSERT INTO contacts (
+        organization_id, name, email, phone, type, tax_number,
+        address_line1, address_line2, city, state, postal_code, country,
+        contact_person, notes
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+      RETURNING *`,[t.organizationId,r,s,o,n||"customer",a,p?.line1,p?.line2,p?.city,p?.state,p?.postalCode,p?.country,l,d]);return i.NextResponse.json(m.rows[0],{status:201})}catch(e){return console.error("Create contact error:",e),i.NextResponse.json({message:"Internal server error"},{status:500})}}let d=new o.AppRouteRouteModule({definition:{kind:n.x.APP_ROUTE,page:"/api/contacts/route",pathname:"/api/contacts",filename:"route",bundlePath:"app/api/contacts/route"},resolvedPagePath:"/Users/user/Desktop/apps/amom/app/api/contacts/route.ts",nextConfigOutput:"",userland:s}),{requestAsyncStorage:m,staticGenerationAsyncStorage:T,serverHooks:R}=d,v="/api/contacts/route";function x(){return(0,a.patchFetch)({serverHooks:R,staticGenerationAsyncStorage:T})}},5456:(e,t,r)=>{r.d(t,{R:()=>n});var s=r(1482),o=r.n(s);async function n(e){try{let t=e.cookies.get("token")?.value;if(!t)return null;return o().verify(t,process.env.JWT_SECRET)}catch(e){return null}}},8784:(e,t,r)=>{r.d(t,{Z:()=>s});let s=new(require("pg")).Pool({host:process.env.DB_HOST,port:parseInt(process.env.DB_PORT||"5432"),database:process.env.DB_NAME,user:process.env.DB_USER,password:process.env.DB_PASSWORD,max:20,idleTimeoutMillis:3e4,connectionTimeoutMillis:2e3})}};var t=require("../../../webpack-runtime.js");t.C(e);var r=e=>t(t.s=e),s=t.X(0,[948,59,482],()=>r(8544));module.exports=s})();

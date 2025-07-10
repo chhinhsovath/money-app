@@ -1,0 +1,484 @@
+{
+  "app_name": "MoneyApp Financial Management System",
+  "generated_date": "2025-01-10",
+  "modules": [
+    {
+      "module": "Authentication",
+      "scenarios": [
+        {
+          "name": "User Login",
+          "user_action": "User logs into the system",
+          "flow": [
+            "User navigates to /login",
+            "Enters email and password",
+            "Clicks 'Sign In' button",
+            "System validates credentials",
+            "Redirects to dashboard on success"
+          ],
+          "expectations": [
+            "JWT token stored in httpOnly cookie",
+            "User data loaded in context",
+            "Redirect to dashboard",
+            "Show error message if credentials invalid"
+          ],
+          "validations": [
+            "Email format validation",
+            "Required field validation",
+            "Invalid credentials error handling"
+          ],
+          "api_endpoints": ["/api/auth/login"],
+          "error_scenarios": [
+            "Invalid email/password",
+            "Account locked",
+            "Network error"
+          ]
+        },
+        {
+          "name": "User Registration",
+          "user_action": "New user creates an account",
+          "flow": [
+            "User navigates to /register",
+            "Fills in email, password, name, organization",
+            "Accepts terms and conditions",
+            "Clicks 'Create Account'",
+            "System creates user and organization",
+            "Auto-login and redirect to dashboard"
+          ],
+          "expectations": [
+            "User account created in database",
+            "Organization created and linked",
+            "Auto-login with JWT token",
+            "Welcome email sent (if configured)"
+          ],
+          "validations": [
+            "Email uniqueness",
+            "Password strength (min 8 chars)",
+            "Required fields",
+            "Email format"
+          ],
+          "api_endpoints": ["/api/auth/register"],
+          "error_scenarios": [
+            "Email already exists",
+            "Weak password",
+            "Database connection error"
+          ]
+        },
+        {
+          "name": "User Logout",
+          "user_action": "User logs out of the system",
+          "flow": [
+            "User clicks profile dropdown",
+            "Selects 'Logout'",
+            "System clears session",
+            "Redirects to login page"
+          ],
+          "expectations": [
+            "JWT token cleared from cookies",
+            "User context cleared",
+            "Redirect to /login",
+            "All protected routes inaccessible"
+          ],
+          "api_endpoints": ["/api/auth/logout"]
+        }
+      ]
+    },
+    {
+      "module": "Invoice Management",
+      "scenarios": [
+        {
+          "name": "Create Invoice",
+          "user_action": "User creates a new invoice",
+          "flow": [
+            "User navigates to Invoices section",
+            "Clicks 'New Invoice' button",
+            "Selects customer from dropdown",
+            "Adds line items with products/services",
+            "Sets due date and payment terms",
+            "Reviews total with tax calculations",
+            "Clicks 'Save' or 'Save and Send'"
+          ],
+          "expectations": [
+            "Invoice saved with unique number",
+            "PDF generated for preview",
+            "Email sent if 'Save and Send' selected",
+            "Invoice appears in list view",
+            "Customer balance updated"
+          ],
+          "validations": [
+            "Customer selection required",
+            "At least one line item required",
+            "Positive amounts only",
+            "Valid date formats",
+            "Tax rate validation"
+          ],
+          "api_endpoints": [
+            "/api/invoices",
+            "/api/contacts",
+            "/api/items",
+            "/api/tax-rates"
+          ],
+          "error_scenarios": [
+            "Duplicate invoice number",
+            "Invalid tax calculation",
+            "Customer credit limit exceeded"
+          ]
+        },
+        {
+          "name": "View/Edit Invoice",
+          "user_action": "User views or edits existing invoice",
+          "flow": [
+            "User navigates to invoice list",
+            "Clicks on invoice number or row",
+            "Views invoice details and PDF preview",
+            "Clicks 'Edit' to modify",
+            "Updates fields as needed",
+            "Saves changes"
+          ],
+          "expectations": [
+            "All invoice data loaded correctly",
+            "PDF preview reflects current data",
+            "Edit preserves original data until saved",
+            "Audit trail updated",
+            "Status changes tracked"
+          ],
+          "validations": [
+            "Cannot edit if invoice is paid",
+            "Cannot delete if payments allocated",
+            "Maintain data integrity"
+          ],
+          "api_endpoints": [
+            "/api/invoices/:id",
+            "/api/invoices/:id/pdf"
+          ]
+        },
+        {
+          "name": "Record Payment",
+          "user_action": "User records payment for invoice",
+          "flow": [
+            "User opens invoice details",
+            "Clicks 'Record Payment'",
+            "Enters payment amount and date",
+            "Selects payment method",
+            "Allocates to invoice",
+            "Confirms payment"
+          ],
+          "expectations": [
+            "Payment recorded in database",
+            "Invoice status updated (partial/paid)",
+            "Customer balance updated",
+            "Payment appears in reports",
+            "Bank reconciliation item created"
+          ],
+          "validations": [
+            "Payment amount <= outstanding",
+            "Valid payment date",
+            "Payment method exists"
+          ],
+          "api_endpoints": [
+            "/api/payments",
+            "/api/invoices/:id/payments"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Expense Management",
+      "scenarios": [
+        {
+          "name": "Submit Expense Claim",
+          "user_action": "Employee submits expense reimbursement",
+          "flow": [
+            "User navigates to Expenses",
+            "Clicks 'New Expense Claim'",
+            "Adds expense items with receipts",
+            "Categorizes each expense",
+            "Adds notes/description",
+            "Submits for approval"
+          ],
+          "expectations": [
+            "Expense claim created with status 'Pending'",
+            "Notification sent to approver",
+            "Receipts uploaded and stored",
+            "Expense appears in user's claims list",
+            "Total calculated correctly"
+          ],
+          "validations": [
+            "Receipt required for amounts > $25",
+            "Valid expense categories",
+            "Date within policy range",
+            "Duplicate submission check"
+          ],
+          "api_endpoints": [
+            "/api/expense-claims",
+            "/api/expense-categories",
+            "/api/file-upload"
+          ],
+          "error_scenarios": [
+            "Missing receipts",
+            "Exceeds policy limits",
+            "Invalid category"
+          ]
+        },
+        {
+          "name": "Approve/Reject Expense",
+          "user_action": "Manager reviews and approves expense",
+          "flow": [
+            "Manager receives notification",
+            "Opens expense claim",
+            "Reviews items and receipts",
+            "Adds approval notes",
+            "Clicks 'Approve' or 'Reject'"
+          ],
+          "expectations": [
+            "Status updated to Approved/Rejected",
+            "Employee notified of decision",
+            "If approved, queued for payment",
+            "Audit trail updated",
+            "Reports reflect new status"
+          ],
+          "validations": [
+            "User has approval authority",
+            "Claim not already processed",
+            "Within approval limits"
+          ],
+          "api_endpoints": [
+            "/api/expense-claims/:id/approve",
+            "/api/expense-claims/:id/reject"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Banking & Reconciliation",
+      "scenarios": [
+        {
+          "name": "Import Bank Statement",
+          "user_action": "User imports bank transactions",
+          "flow": [
+            "User navigates to Bank Accounts",
+            "Selects account to reconcile",
+            "Clicks 'Import Statement'",
+            "Uploads CSV/OFX file",
+            "Reviews imported transactions",
+            "Confirms import"
+          ],
+          "expectations": [
+            "Transactions parsed correctly",
+            "Duplicates detected and skipped",
+            "Auto-matching with existing records",
+            "Balance updated",
+            "Ready for reconciliation"
+          ],
+          "validations": [
+            "Valid file format",
+            "Correct bank account",
+            "Date range validation",
+            "No duplicate imports"
+          ],
+          "api_endpoints": [
+            "/api/bank-accounts/:id/import",
+            "/api/bank-transactions"
+          ],
+          "error_scenarios": [
+            "Invalid file format",
+            "Wrong account number",
+            "Parsing errors"
+          ]
+        },
+        {
+          "name": "Reconcile Transactions",
+          "user_action": "User matches bank transactions",
+          "flow": [
+            "User opens reconciliation view",
+            "System shows unreconciled items",
+            "User matches bank to book transactions",
+            "Adjusts for fees or differences",
+            "Marks period as reconciled"
+          ],
+          "expectations": [
+            "Transactions marked as reconciled",
+            "Reconciliation report generated",
+            "Differences identified",
+            "GL entries created for adjustments",
+            "Audit trail maintained"
+          ],
+          "validations": [
+            "Amounts must match",
+            "Dates within range",
+            "No duplicate matches"
+          ],
+          "api_endpoints": [
+            "/api/bank-reconciliation",
+            "/api/bank-transactions/:id/match"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Financial Reporting",
+      "scenarios": [
+        {
+          "name": "Generate Profit & Loss",
+          "user_action": "User generates P&L report",
+          "flow": [
+            "User navigates to Reports",
+            "Selects 'Profit & Loss'",
+            "Sets date range (month/quarter/year)",
+            "Selects comparison period (optional)",
+            "Clicks 'Generate Report'",
+            "Views/exports results"
+          ],
+          "expectations": [
+            "Accurate revenue calculation",
+            "Expenses categorized correctly",
+            "Net profit calculated",
+            "Comparison percentages shown",
+            "Export to PDF/Excel available"
+          ],
+          "validations": [
+            "Valid date range",
+            "Data exists for period",
+            "User has view permissions"
+          ],
+          "api_endpoints": [
+            "/api/reports/profit-loss",
+            "/api/reports/export"
+          ],
+          "error_scenarios": [
+            "No data for period",
+            "Calculation errors",
+            "Export failure"
+          ]
+        },
+        {
+          "name": "Generate Balance Sheet",
+          "user_action": "User generates balance sheet",
+          "flow": [
+            "User navigates to Reports",
+            "Selects 'Balance Sheet'",
+            "Sets as-of date",
+            "Selects detail level",
+            "Generates report",
+            "Reviews assets/liabilities/equity"
+          ],
+          "expectations": [
+            "Assets = Liabilities + Equity",
+            "Current vs non-current classification",
+            "Account balances accurate",
+            "Proper formatting",
+            "Drill-down capability"
+          ],
+          "validations": [
+            "Valid as-of date",
+            "Books balanced",
+            "No missing accounts"
+          ],
+          "api_endpoints": [
+            "/api/reports/balance-sheet",
+            "/api/accounts/balances"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Contact Management",
+      "scenarios": [
+        {
+          "name": "Add New Customer",
+          "user_action": "User adds a new customer",
+          "flow": [
+            "User navigates to Contacts",
+            "Clicks 'New Contact'",
+            "Selects 'Customer' type",
+            "Fills in company/personal details",
+            "Adds contact persons",
+            "Sets payment terms",
+            "Saves contact"
+          ],
+          "expectations": [
+            "Contact saved with unique ID",
+            "Available in invoice dropdowns",
+            "Credit terms applied",
+            "Contact history started",
+            "Search index updated"
+          ],
+          "validations": [
+            "Required fields filled",
+            "Valid email format",
+            "Unique tax ID (if provided)",
+            "Valid payment terms"
+          ],
+          "api_endpoints": [
+            "/api/contacts",
+            "/api/contacts/validate"
+          ],
+          "error_scenarios": [
+            "Duplicate contact",
+            "Invalid tax ID",
+            "Missing required fields"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "System Administration",
+      "scenarios": [
+        {
+          "name": "Manage Users",
+          "user_action": "Admin manages system users",
+          "flow": [
+            "Admin navigates to Settings > Users",
+            "Views current users list",
+            "Clicks 'Invite User'",
+            "Enters email and role",
+            "Sets permissions",
+            "Sends invitation"
+          ],
+          "expectations": [
+            "Invitation email sent",
+            "User appears as 'Pending'",
+            "Permissions saved",
+            "Audit log updated",
+            "Cannot exceed license limit"
+          ],
+          "validations": [
+            "Valid email address",
+            "Role exists",
+            "Admin privileges required",
+            "License limit check"
+          ],
+          "api_endpoints": [
+            "/api/users",
+            "/api/users/invite",
+            "/api/roles"
+          ]
+        }
+      ]
+    }
+  ],
+  "global_expectations": {
+    "performance": [
+      "Page load < 3 seconds",
+      "API response < 500ms",
+      "Search results < 1 second"
+    ],
+    "security": [
+      "All routes protected by auth",
+      "CSRF protection enabled",
+      "XSS prevention in place",
+      "SQL injection protected"
+    ],
+    "usability": [
+      "Loading states for all async operations",
+      "Clear error messages",
+      "Confirmation for destructive actions",
+      "Keyboard navigation support"
+    ],
+    "data_integrity": [
+      "Transactions atomic",
+      "Audit trail for all changes",
+      "Soft deletes where applicable",
+      "Referential integrity maintained"
+    ]
+  }
+}

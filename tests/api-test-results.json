@@ -1,0 +1,148 @@
+{
+  "timestamp": "2025-07-10T08:51:29.173Z",
+  "environment": "development",
+  "baseUrl": "http://localhost:3002/api",
+  "modules": [
+    {
+      "name": "Authentication",
+      "endpoints": [
+        {
+          "endpoint": "/auth/register",
+          "method": "POST",
+          "description": "User Registration",
+          "tests": [
+            {
+              "name": "Valid registration",
+              "expected": 200,
+              "actual": 200,
+              "passed": true,
+              "response": {
+                "user": {
+                  "id": "310f0047-6802-4735-a7bf-1665d7bdce25",
+                  "email": "test_1752137489202@example.com",
+                  "firstName": "Test",
+                  "lastName": "User",
+                  "organizationId": "ddb7fc5c-0187-4711-9296-cac49e0c0f6c",
+                  "role": "admin"
+                }
+              }
+            },
+            {
+              "name": "Duplicate email rejection",
+              "expected": 400,
+              "actual": 400,
+              "passed": true
+            }
+          ]
+        },
+        {
+          "endpoint": "/auth/login",
+          "method": "POST",
+          "description": "User Login",
+          "tests": [
+            {
+              "name": "Valid login",
+              "expected": 200,
+              "actual": 200,
+              "passed": true
+            },
+            {
+              "name": "Invalid credentials rejection",
+              "expected": 401,
+              "actual": 401,
+              "passed": true
+            }
+          ]
+        },
+        {
+          "endpoint": "/auth/me",
+          "method": "GET",
+          "description": "Get Current User",
+          "tests": [
+            {
+              "name": "Get authenticated user",
+              "expected": 200,
+              "actual": 401,
+              "passed": false
+            }
+          ]
+        },
+        {
+          "endpoint": "/auth/logout",
+          "method": "POST",
+          "description": "User Logout",
+          "tests": [
+            {
+              "name": "Successful logout",
+              "expected": 200,
+              "actual": 200,
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Contacts",
+      "endpoints": [
+        {
+          "endpoint": "/contacts",
+          "method": "POST",
+          "description": "Create Contact",
+          "tests": [
+            {
+              "name": "Create new contact",
+              "expected": 201,
+              "actual": 401,
+              "passed": false
+            }
+          ]
+        },
+        {
+          "endpoint": "/contacts",
+          "method": "GET",
+          "description": "Get All Contacts",
+          "tests": [
+            {
+              "name": "Retrieve all contacts",
+              "expected": 200,
+              "actual": 401,
+              "passed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "endpoints": [
+        {
+          "endpoint": "/invoices",
+          "method": "POST",
+          "description": "Create Invoice",
+          "tests": [
+            {
+              "name": "Create new invoice",
+              "expected": 201,
+              "actual": 401,
+              "passed": false
+            }
+          ]
+        },
+        {
+          "endpoint": "/invoices",
+          "method": "GET",
+          "description": "Get All Invoices",
+          "tests": [
+            {
+              "name": "Retrieve all invoices",
+              "expected": 200,
+              "actual": 401,
+              "passed": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

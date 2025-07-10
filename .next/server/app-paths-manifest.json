@@ -1,0 +1,18 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/auth/logout/route": "app/api/auth/logout/route.js",
+  "/api/auth/me/route": "app/api/auth/me/route.js",
+  "/api/contacts/[id]/route": "app/api/contacts/[id]/route.js",
+  "/api/contacts/route": "app/api/contacts/route.js",
+  "/api/invoices/route": "app/api/invoices/route.js",
+  "/api/auth/register/route": "app/api/auth/register/route.js",
+  "/page": "app/page.js",
+  "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
+  "/(auth)/register/page": "app/(auth)/register/page.js",
+  "/(dashboard)/invoices/new/page": "app/(dashboard)/invoices/new/page.js",
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(dashboard)/invoices/page": "app/(dashboard)/invoices/page.js",
+  "/(dashboard)/invoices/[id]/page": "app/(dashboard)/invoices/[id]/page.js",
+  "/(dashboard)/invoices/[id]/edit/page": "app/(dashboard)/invoices/[id]/edit/page.js"
+}

@@ -1,0 +1,5380 @@
+{
+  "timestamp": "2025-07-10T08:54:59.639Z",
+  "environments": [
+    {
+      "key": "local",
+      "name": "Local Development",
+      "status": "connected"
+    },
+    {
+      "key": "production",
+      "name": "Production",
+      "status": "connected"
+    }
+  ],
+  "tables": [
+    {
+      "name": "organizations",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "legal_name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_number",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "registration_number",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_email",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "phone",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "address",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "city",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "state",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "postal_code",
+              "data_type": "character varying",
+              "character_maximum_length": 20,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "country",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "currency_code",
+              "data_type": "character varying",
+              "character_maximum_length": 3,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'USD'::character varying"
+            },
+            {
+              "column_name": "timezone",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'UTC'::character varying"
+            },
+            {
+              "column_name": "fiscal_year_start_month",
+              "data_type": "integer",
+              "character_maximum_length": null,
+              "numeric_precision": 32,
+              "numeric_scale": 0,
+              "is_nullable": "YES",
+              "column_default": "1"
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 18,
+          "indexes": [
+            {
+              "indexname": "organizations_pkey",
+              "indexdef": "CREATE UNIQUE INDEX organizations_pkey ON public.organizations USING btree (id)"
+            }
+          ],
+          "foreignKeys": []
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "legal_name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_number",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "registration_number",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_email",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "phone",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "address",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "city",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "state",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "postal_code",
+              "data_type": "character varying",
+              "character_maximum_length": 20,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "country",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "currency_code",
+              "data_type": "character varying",
+              "character_maximum_length": 3,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'USD'::character varying"
+            },
+            {
+              "column_name": "timezone",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'UTC'::character varying"
+            },
+            {
+              "column_name": "fiscal_year_start_month",
+              "data_type": "integer",
+              "character_maximum_length": null,
+              "numeric_precision": 32,
+              "numeric_scale": 0,
+              "is_nullable": "YES",
+              "column_default": "1"
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 18,
+          "indexes": [
+            {
+              "indexname": "organizations_pkey",
+              "indexdef": "CREATE UNIQUE INDEX organizations_pkey ON public.organizations USING btree (id)"
+            }
+          ],
+          "foreignKeys": []
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "users",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "first_name",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "last_name",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "email",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "password_hash",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "role",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'user'::character varying"
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "last_login",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 11,
+          "indexes": [
+            {
+              "indexname": "users_email_key",
+              "indexdef": "CREATE UNIQUE INDEX users_email_key ON public.users USING btree (email)"
+            },
+            {
+              "indexname": "users_pkey",
+              "indexdef": "CREATE UNIQUE INDEX users_pkey ON public.users USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "users_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "first_name",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "last_name",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "email",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "password_hash",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "role",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'user'::character varying"
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "last_login",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 11,
+          "indexes": [
+            {
+              "indexname": "users_email_key",
+              "indexdef": "CREATE UNIQUE INDEX users_email_key ON public.users USING btree (email)"
+            },
+            {
+              "indexname": "users_pkey",
+              "indexdef": "CREATE UNIQUE INDEX users_pkey ON public.users USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "users_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "contacts",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "type",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "email",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "phone",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_person",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "address",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "city",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "state",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "postal_code",
+              "data_type": "character varying",
+              "character_maximum_length": 20,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "country",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_number",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "payment_terms",
+              "data_type": "integer",
+              "character_maximum_length": null,
+              "numeric_precision": 32,
+              "numeric_scale": 0,
+              "is_nullable": "YES",
+              "column_default": "30"
+            },
+            {
+              "column_name": "credit_limit",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 18,
+          "indexes": [
+            {
+              "indexname": "contacts_pkey",
+              "indexdef": "CREATE UNIQUE INDEX contacts_pkey ON public.contacts USING btree (id)"
+            },
+            {
+              "indexname": "idx_contacts_organization",
+              "indexdef": "CREATE INDEX idx_contacts_organization ON public.contacts USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_contacts_type",
+              "indexdef": "CREATE INDEX idx_contacts_type ON public.contacts USING btree (type)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "contacts_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "type",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "email",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "phone",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_person",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "address",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "city",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "state",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "postal_code",
+              "data_type": "character varying",
+              "character_maximum_length": 20,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "country",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_number",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "payment_terms",
+              "data_type": "integer",
+              "character_maximum_length": null,
+              "numeric_precision": 32,
+              "numeric_scale": 0,
+              "is_nullable": "YES",
+              "column_default": "30"
+            },
+            {
+              "column_name": "credit_limit",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 18,
+          "indexes": [
+            {
+              "indexname": "contacts_pkey",
+              "indexdef": "CREATE UNIQUE INDEX contacts_pkey ON public.contacts USING btree (id)"
+            },
+            {
+              "indexname": "idx_contacts_organization",
+              "indexdef": "CREATE INDEX idx_contacts_organization ON public.contacts USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_contacts_type",
+              "indexdef": "CREATE INDEX idx_contacts_type ON public.contacts USING btree (type)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "contacts_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "invoices",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "invoice_number",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "issue_date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "due_date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "status",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'draft'::character varying"
+            },
+            {
+              "column_name": "subtotal",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "tax_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "total",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "paid_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "notes",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "terms",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "template_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 17,
+          "indexes": [
+            {
+              "indexname": "idx_invoices_contact",
+              "indexdef": "CREATE INDEX idx_invoices_contact ON public.invoices USING btree (contact_id)"
+            },
+            {
+              "indexname": "idx_invoices_due_date",
+              "indexdef": "CREATE INDEX idx_invoices_due_date ON public.invoices USING btree (due_date)"
+            },
+            {
+              "indexname": "idx_invoices_organization",
+              "indexdef": "CREATE INDEX idx_invoices_organization ON public.invoices USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_invoices_status",
+              "indexdef": "CREATE INDEX idx_invoices_status ON public.invoices USING btree (status)"
+            },
+            {
+              "indexname": "invoices_organization_id_invoice_number_key",
+              "indexdef": "CREATE UNIQUE INDEX invoices_organization_id_invoice_number_key ON public.invoices USING btree (organization_id, invoice_number)"
+            },
+            {
+              "indexname": "invoices_pkey",
+              "indexdef": "CREATE UNIQUE INDEX invoices_pkey ON public.invoices USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "invoices_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "invoices_contact_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "contact_id",
+              "foreign_table_name": "contacts",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "invoice_number",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "issue_date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "due_date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "status",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'draft'::character varying"
+            },
+            {
+              "column_name": "subtotal",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "tax_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "total",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "paid_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "notes",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "terms",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "template_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 17,
+          "indexes": [
+            {
+              "indexname": "idx_invoices_contact",
+              "indexdef": "CREATE INDEX idx_invoices_contact ON public.invoices USING btree (contact_id)"
+            },
+            {
+              "indexname": "idx_invoices_due_date",
+              "indexdef": "CREATE INDEX idx_invoices_due_date ON public.invoices USING btree (due_date)"
+            },
+            {
+              "indexname": "idx_invoices_organization",
+              "indexdef": "CREATE INDEX idx_invoices_organization ON public.invoices USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_invoices_status",
+              "indexdef": "CREATE INDEX idx_invoices_status ON public.invoices USING btree (status)"
+            },
+            {
+              "indexname": "invoices_organization_id_invoice_number_key",
+              "indexdef": "CREATE UNIQUE INDEX invoices_organization_id_invoice_number_key ON public.invoices USING btree (organization_id, invoice_number)"
+            },
+            {
+              "indexname": "invoices_pkey",
+              "indexdef": "CREATE UNIQUE INDEX invoices_pkey ON public.invoices USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "invoices_contact_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "contact_id",
+              "foreign_table_name": "contacts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "invoices_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "invoice_line_items",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "invoice_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "quantity",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 10,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "unit_price",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "line_total",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_rate_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 10,
+          "indexes": [
+            {
+              "indexname": "invoice_line_items_pkey",
+              "indexdef": "CREATE UNIQUE INDEX invoice_line_items_pkey ON public.invoice_line_items USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "invoice_line_items_invoice_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "invoice_id",
+              "foreign_table_name": "invoices",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "invoice_line_items_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "invoice_line_items_tax_rate_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "tax_rate_id",
+              "foreign_table_name": "tax_rates",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "invoice_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "quantity",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 10,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "unit_price",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "line_total",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_rate_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 10,
+          "indexes": [
+            {
+              "indexname": "invoice_line_items_pkey",
+              "indexdef": "CREATE UNIQUE INDEX invoice_line_items_pkey ON public.invoice_line_items USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "invoice_line_items_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "invoice_line_items_invoice_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "invoice_id",
+              "foreign_table_name": "invoices",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "invoice_line_items_tax_rate_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "tax_rate_id",
+              "foreign_table_name": "tax_rates",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "bills",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "bill_number",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "issue_date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "due_date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "status",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'draft'::character varying"
+            },
+            {
+              "column_name": "subtotal",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "tax_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "total",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "paid_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "notes",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 16,
+          "indexes": [
+            {
+              "indexname": "bills_organization_id_bill_number_key",
+              "indexdef": "CREATE UNIQUE INDEX bills_organization_id_bill_number_key ON public.bills USING btree (organization_id, bill_number)"
+            },
+            {
+              "indexname": "bills_pkey",
+              "indexdef": "CREATE UNIQUE INDEX bills_pkey ON public.bills USING btree (id)"
+            },
+            {
+              "indexname": "idx_bills_contact",
+              "indexdef": "CREATE INDEX idx_bills_contact ON public.bills USING btree (contact_id)"
+            },
+            {
+              "indexname": "idx_bills_due_date",
+              "indexdef": "CREATE INDEX idx_bills_due_date ON public.bills USING btree (due_date)"
+            },
+            {
+              "indexname": "idx_bills_organization",
+              "indexdef": "CREATE INDEX idx_bills_organization ON public.bills USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_bills_status",
+              "indexdef": "CREATE INDEX idx_bills_status ON public.bills USING btree (status)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "bills_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "bills_contact_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "contact_id",
+              "foreign_table_name": "contacts",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "bill_number",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "issue_date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "due_date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "status",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'draft'::character varying"
+            },
+            {
+              "column_name": "subtotal",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "tax_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "total",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "paid_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "notes",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 16,
+          "indexes": [
+            {
+              "indexname": "bills_organization_id_bill_number_key",
+              "indexdef": "CREATE UNIQUE INDEX bills_organization_id_bill_number_key ON public.bills USING btree (organization_id, bill_number)"
+            },
+            {
+              "indexname": "bills_pkey",
+              "indexdef": "CREATE UNIQUE INDEX bills_pkey ON public.bills USING btree (id)"
+            },
+            {
+              "indexname": "idx_bills_contact",
+              "indexdef": "CREATE INDEX idx_bills_contact ON public.bills USING btree (contact_id)"
+            },
+            {
+              "indexname": "idx_bills_due_date",
+              "indexdef": "CREATE INDEX idx_bills_due_date ON public.bills USING btree (due_date)"
+            },
+            {
+              "indexname": "idx_bills_organization",
+              "indexdef": "CREATE INDEX idx_bills_organization ON public.bills USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_bills_status",
+              "indexdef": "CREATE INDEX idx_bills_status ON public.bills USING btree (status)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "bills_contact_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "contact_id",
+              "foreign_table_name": "contacts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "bills_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "bill_line_items",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "bill_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "quantity",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 10,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "unit_price",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "line_total",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_rate_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 10,
+          "indexes": [
+            {
+              "indexname": "bill_line_items_pkey",
+              "indexdef": "CREATE UNIQUE INDEX bill_line_items_pkey ON public.bill_line_items USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "bill_line_items_bill_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "bill_id",
+              "foreign_table_name": "bills",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "bill_line_items_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "bill_line_items_tax_rate_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "tax_rate_id",
+              "foreign_table_name": "tax_rates",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "bill_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "quantity",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 10,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "unit_price",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "line_total",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_rate_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 10,
+          "indexes": [
+            {
+              "indexname": "bill_line_items_pkey",
+              "indexdef": "CREATE UNIQUE INDEX bill_line_items_pkey ON public.bill_line_items USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "bill_line_items_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "bill_line_items_bill_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "bill_id",
+              "foreign_table_name": "bills",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "bill_line_items_tax_rate_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "tax_rate_id",
+              "foreign_table_name": "tax_rates",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "payments",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "payment_number",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "payment_method",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "bank_account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "notes",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 12,
+          "indexes": [
+            {
+              "indexname": "idx_payments_contact",
+              "indexdef": "CREATE INDEX idx_payments_contact ON public.payments USING btree (contact_id)"
+            },
+            {
+              "indexname": "idx_payments_organization",
+              "indexdef": "CREATE INDEX idx_payments_organization ON public.payments USING btree (organization_id)"
+            },
+            {
+              "indexname": "payments_organization_id_payment_number_key",
+              "indexdef": "CREATE UNIQUE INDEX payments_organization_id_payment_number_key ON public.payments USING btree (organization_id, payment_number)"
+            },
+            {
+              "indexname": "payments_pkey",
+              "indexdef": "CREATE UNIQUE INDEX payments_pkey ON public.payments USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "payments_contact_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "contact_id",
+              "foreign_table_name": "contacts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "payments_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "payments_bank_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "bank_account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "payment_number",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "payment_method",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "bank_account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "notes",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 12,
+          "indexes": [
+            {
+              "indexname": "idx_payments_contact",
+              "indexdef": "CREATE INDEX idx_payments_contact ON public.payments USING btree (contact_id)"
+            },
+            {
+              "indexname": "idx_payments_organization",
+              "indexdef": "CREATE INDEX idx_payments_organization ON public.payments USING btree (organization_id)"
+            },
+            {
+              "indexname": "payments_organization_id_payment_number_key",
+              "indexdef": "CREATE UNIQUE INDEX payments_organization_id_payment_number_key ON public.payments USING btree (organization_id, payment_number)"
+            },
+            {
+              "indexname": "payments_pkey",
+              "indexdef": "CREATE UNIQUE INDEX payments_pkey ON public.payments USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "payments_bank_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "bank_account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "payments_contact_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "contact_id",
+              "foreign_table_name": "contacts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "payments_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "payment_allocations",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "payment_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "invoice_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "bill_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 6,
+          "indexes": [
+            {
+              "indexname": "payment_allocations_pkey",
+              "indexdef": "CREATE UNIQUE INDEX payment_allocations_pkey ON public.payment_allocations USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "payment_allocations_payment_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "payment_id",
+              "foreign_table_name": "payments",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "payment_allocations_invoice_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "invoice_id",
+              "foreign_table_name": "invoices",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "payment_allocations_bill_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "bill_id",
+              "foreign_table_name": "bills",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "payment_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "invoice_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "bill_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 6,
+          "indexes": [
+            {
+              "indexname": "payment_allocations_pkey",
+              "indexdef": "CREATE UNIQUE INDEX payment_allocations_pkey ON public.payment_allocations USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "payment_allocations_bill_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "bill_id",
+              "foreign_table_name": "bills",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "payment_allocations_invoice_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "invoice_id",
+              "foreign_table_name": "invoices",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "payment_allocations_payment_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "payment_id",
+              "foreign_table_name": "payments",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "accounts",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "code",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "type",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "parent_account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "is_bank_account",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "false"
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "tax_rate_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "balance",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 13,
+          "indexes": [
+            {
+              "indexname": "accounts_organization_id_code_key",
+              "indexdef": "CREATE UNIQUE INDEX accounts_organization_id_code_key ON public.accounts USING btree (organization_id, code)"
+            },
+            {
+              "indexname": "accounts_pkey",
+              "indexdef": "CREATE UNIQUE INDEX accounts_pkey ON public.accounts USING btree (id)"
+            },
+            {
+              "indexname": "idx_accounts_organization",
+              "indexdef": "CREATE INDEX idx_accounts_organization ON public.accounts USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_accounts_parent",
+              "indexdef": "CREATE INDEX idx_accounts_parent ON public.accounts USING btree (parent_account_id)"
+            },
+            {
+              "indexname": "idx_accounts_type",
+              "indexdef": "CREATE INDEX idx_accounts_type ON public.accounts USING btree (type)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "accounts_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "accounts_parent_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "parent_account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "code",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "type",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "parent_account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "is_bank_account",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "false"
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "tax_rate_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "balance",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 13,
+          "indexes": [
+            {
+              "indexname": "accounts_organization_id_code_key",
+              "indexdef": "CREATE UNIQUE INDEX accounts_organization_id_code_key ON public.accounts USING btree (organization_id, code)"
+            },
+            {
+              "indexname": "accounts_pkey",
+              "indexdef": "CREATE UNIQUE INDEX accounts_pkey ON public.accounts USING btree (id)"
+            },
+            {
+              "indexname": "idx_accounts_organization",
+              "indexdef": "CREATE INDEX idx_accounts_organization ON public.accounts USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_accounts_parent",
+              "indexdef": "CREATE INDEX idx_accounts_parent ON public.accounts USING btree (parent_account_id)"
+            },
+            {
+              "indexname": "idx_accounts_type",
+              "indexdef": "CREATE INDEX idx_accounts_type ON public.accounts USING btree (type)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "accounts_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "accounts_parent_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "parent_account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "journal_entries",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "entry_number",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "total_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "status",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'posted'::character varying"
+            },
+            {
+              "column_name": "created_by",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 11,
+          "indexes": [
+            {
+              "indexname": "idx_journal_entries_date",
+              "indexdef": "CREATE INDEX idx_journal_entries_date ON public.journal_entries USING btree (date)"
+            },
+            {
+              "indexname": "idx_journal_entries_organization",
+              "indexdef": "CREATE INDEX idx_journal_entries_organization ON public.journal_entries USING btree (organization_id)"
+            },
+            {
+              "indexname": "journal_entries_organization_id_entry_number_key",
+              "indexdef": "CREATE UNIQUE INDEX journal_entries_organization_id_entry_number_key ON public.journal_entries USING btree (organization_id, entry_number)"
+            },
+            {
+              "indexname": "journal_entries_pkey",
+              "indexdef": "CREATE UNIQUE INDEX journal_entries_pkey ON public.journal_entries USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "journal_entries_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "journal_entries_created_by_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "created_by",
+              "foreign_table_name": "users",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "entry_number",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "total_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "status",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'posted'::character varying"
+            },
+            {
+              "column_name": "created_by",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 11,
+          "indexes": [
+            {
+              "indexname": "idx_journal_entries_date",
+              "indexdef": "CREATE INDEX idx_journal_entries_date ON public.journal_entries USING btree (date)"
+            },
+            {
+              "indexname": "idx_journal_entries_organization",
+              "indexdef": "CREATE INDEX idx_journal_entries_organization ON public.journal_entries USING btree (organization_id)"
+            },
+            {
+              "indexname": "journal_entries_organization_id_entry_number_key",
+              "indexdef": "CREATE UNIQUE INDEX journal_entries_organization_id_entry_number_key ON public.journal_entries USING btree (organization_id, entry_number)"
+            },
+            {
+              "indexname": "journal_entries_pkey",
+              "indexdef": "CREATE UNIQUE INDEX journal_entries_pkey ON public.journal_entries USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "journal_entries_created_by_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "created_by",
+              "foreign_table_name": "users",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "journal_entries_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "journal_entry_lines",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "journal_entry_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "debit_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "credit_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 9,
+          "indexes": [
+            {
+              "indexname": "idx_journal_entry_lines_account",
+              "indexdef": "CREATE INDEX idx_journal_entry_lines_account ON public.journal_entry_lines USING btree (account_id)"
+            },
+            {
+              "indexname": "idx_journal_entry_lines_entry",
+              "indexdef": "CREATE INDEX idx_journal_entry_lines_entry ON public.journal_entry_lines USING btree (journal_entry_id)"
+            },
+            {
+              "indexname": "journal_entry_lines_pkey",
+              "indexdef": "CREATE UNIQUE INDEX journal_entry_lines_pkey ON public.journal_entry_lines USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "journal_entry_lines_journal_entry_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "journal_entry_id",
+              "foreign_table_name": "journal_entries",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "journal_entry_lines_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "journal_entry_lines_contact_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "contact_id",
+              "foreign_table_name": "contacts",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "journal_entry_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "debit_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "credit_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "contact_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 9,
+          "indexes": [
+            {
+              "indexname": "idx_journal_entry_lines_account",
+              "indexdef": "CREATE INDEX idx_journal_entry_lines_account ON public.journal_entry_lines USING btree (account_id)"
+            },
+            {
+              "indexname": "idx_journal_entry_lines_entry",
+              "indexdef": "CREATE INDEX idx_journal_entry_lines_entry ON public.journal_entry_lines USING btree (journal_entry_id)"
+            },
+            {
+              "indexname": "journal_entry_lines_pkey",
+              "indexdef": "CREATE UNIQUE INDEX journal_entry_lines_pkey ON public.journal_entry_lines USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "journal_entry_lines_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "journal_entry_lines_contact_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "contact_id",
+              "foreign_table_name": "contacts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "journal_entry_lines_journal_entry_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "journal_entry_id",
+              "foreign_table_name": "journal_entries",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "bank_accounts",
+      "environments": {
+        "local": {
+          "exists": false,
+          "columns": [],
+          "columnCount": 0,
+          "indexes": [],
+          "foreignKeys": []
+        },
+        "production": {
+          "exists": false,
+          "columns": [],
+          "columnCount": 0,
+          "indexes": [],
+          "foreignKeys": []
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "bank_transactions",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "bank_account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "type",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "payee",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "is_reconciled",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "false"
+            },
+            {
+              "column_name": "contact_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 13,
+          "indexes": [
+            {
+              "indexname": "bank_transactions_pkey",
+              "indexdef": "CREATE UNIQUE INDEX bank_transactions_pkey ON public.bank_transactions USING btree (id)"
+            },
+            {
+              "indexname": "idx_bank_transactions_account",
+              "indexdef": "CREATE INDEX idx_bank_transactions_account ON public.bank_transactions USING btree (bank_account_id)"
+            },
+            {
+              "indexname": "idx_bank_transactions_date",
+              "indexdef": "CREATE INDEX idx_bank_transactions_date ON public.bank_transactions USING btree (date)"
+            },
+            {
+              "indexname": "idx_bank_transactions_organization",
+              "indexdef": "CREATE INDEX idx_bank_transactions_organization ON public.bank_transactions USING btree (organization_id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "bank_transactions_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "bank_transactions_bank_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "bank_account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "bank_transactions_contact_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "contact_id",
+              "foreign_table_name": "contacts",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "bank_account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "type",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "payee",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "is_reconciled",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "false"
+            },
+            {
+              "column_name": "contact_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 13,
+          "indexes": [
+            {
+              "indexname": "bank_transactions_pkey",
+              "indexdef": "CREATE UNIQUE INDEX bank_transactions_pkey ON public.bank_transactions USING btree (id)"
+            },
+            {
+              "indexname": "idx_bank_transactions_account",
+              "indexdef": "CREATE INDEX idx_bank_transactions_account ON public.bank_transactions USING btree (bank_account_id)"
+            },
+            {
+              "indexname": "idx_bank_transactions_date",
+              "indexdef": "CREATE INDEX idx_bank_transactions_date ON public.bank_transactions USING btree (date)"
+            },
+            {
+              "indexname": "idx_bank_transactions_organization",
+              "indexdef": "CREATE INDEX idx_bank_transactions_organization ON public.bank_transactions USING btree (organization_id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "bank_transactions_bank_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "bank_account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "bank_transactions_contact_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "contact_id",
+              "foreign_table_name": "contacts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "bank_transactions_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "items",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "item_code",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "type",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "unit_price",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "cost_price",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "quantity_on_hand",
+              "data_type": "integer",
+              "character_maximum_length": null,
+              "numeric_precision": 32,
+              "numeric_scale": 0,
+              "is_nullable": "YES",
+              "column_default": "0"
+            },
+            {
+              "column_name": "sales_account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "purchase_account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_rate_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 15,
+          "indexes": [
+            {
+              "indexname": "idx_items_organization",
+              "indexdef": "CREATE INDEX idx_items_organization ON public.items USING btree (organization_id)"
+            },
+            {
+              "indexname": "items_organization_id_item_code_key",
+              "indexdef": "CREATE UNIQUE INDEX items_organization_id_item_code_key ON public.items USING btree (organization_id, item_code)"
+            },
+            {
+              "indexname": "items_pkey",
+              "indexdef": "CREATE UNIQUE INDEX items_pkey ON public.items USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "items_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "items_sales_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "sales_account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "items_purchase_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "purchase_account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "items_tax_rate_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "tax_rate_id",
+              "foreign_table_name": "tax_rates",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "item_code",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "name",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "type",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "unit_price",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "cost_price",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "quantity_on_hand",
+              "data_type": "integer",
+              "character_maximum_length": null,
+              "numeric_precision": 32,
+              "numeric_scale": 0,
+              "is_nullable": "YES",
+              "column_default": "0"
+            },
+            {
+              "column_name": "sales_account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "purchase_account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_rate_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 15,
+          "indexes": [
+            {
+              "indexname": "idx_items_organization",
+              "indexdef": "CREATE INDEX idx_items_organization ON public.items USING btree (organization_id)"
+            },
+            {
+              "indexname": "items_organization_id_item_code_key",
+              "indexdef": "CREATE UNIQUE INDEX items_organization_id_item_code_key ON public.items USING btree (organization_id, item_code)"
+            },
+            {
+              "indexname": "items_pkey",
+              "indexdef": "CREATE UNIQUE INDEX items_pkey ON public.items USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "items_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "items_purchase_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "purchase_account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "items_sales_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "sales_account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "items_tax_rate_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "tax_rate_id",
+              "foreign_table_name": "tax_rates",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "tax_rates",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "name",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "rate",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 8,
+              "numeric_scale": 4,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "type",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 8,
+          "indexes": [
+            {
+              "indexname": "tax_rates_pkey",
+              "indexdef": "CREATE UNIQUE INDEX tax_rates_pkey ON public.tax_rates USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "tax_rates_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "name",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "rate",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 8,
+              "numeric_scale": 4,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "type",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "is_active",
+              "data_type": "boolean",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "true"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 8,
+          "indexes": [
+            {
+              "indexname": "tax_rates_pkey",
+              "indexdef": "CREATE UNIQUE INDEX tax_rates_pkey ON public.tax_rates USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "tax_rates_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "expense_claims",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "claim_number",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "user_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "total_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "status",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'draft'::character varying"
+            },
+            {
+              "column_name": "notes",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 10,
+          "indexes": [
+            {
+              "indexname": "expense_claims_organization_id_claim_number_key",
+              "indexdef": "CREATE UNIQUE INDEX expense_claims_organization_id_claim_number_key ON public.expense_claims USING btree (organization_id, claim_number)"
+            },
+            {
+              "indexname": "expense_claims_pkey",
+              "indexdef": "CREATE UNIQUE INDEX expense_claims_pkey ON public.expense_claims USING btree (id)"
+            },
+            {
+              "indexname": "idx_expense_claims_organization",
+              "indexdef": "CREATE INDEX idx_expense_claims_organization ON public.expense_claims USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_expense_claims_user",
+              "indexdef": "CREATE INDEX idx_expense_claims_user ON public.expense_claims USING btree (user_id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "expense_claims_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "expense_claims_user_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "user_id",
+              "foreign_table_name": "users",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "claim_number",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "user_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "total_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "status",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "'draft'::character varying"
+            },
+            {
+              "column_name": "notes",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            },
+            {
+              "column_name": "updated_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 10,
+          "indexes": [
+            {
+              "indexname": "expense_claims_organization_id_claim_number_key",
+              "indexdef": "CREATE UNIQUE INDEX expense_claims_organization_id_claim_number_key ON public.expense_claims USING btree (organization_id, claim_number)"
+            },
+            {
+              "indexname": "expense_claims_pkey",
+              "indexdef": "CREATE UNIQUE INDEX expense_claims_pkey ON public.expense_claims USING btree (id)"
+            },
+            {
+              "indexname": "idx_expense_claims_organization",
+              "indexdef": "CREATE INDEX idx_expense_claims_organization ON public.expense_claims USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_expense_claims_user",
+              "indexdef": "CREATE INDEX idx_expense_claims_user ON public.expense_claims USING btree (user_id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "expense_claims_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "expense_claims_user_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "user_id",
+              "foreign_table_name": "users",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "expense_claim_lines",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "expense_claim_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "receipt_reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_rate_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 10,
+          "indexes": [
+            {
+              "indexname": "expense_claim_lines_pkey",
+              "indexdef": "CREATE UNIQUE INDEX expense_claim_lines_pkey ON public.expense_claim_lines USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "expense_claim_lines_tax_rate_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "tax_rate_id",
+              "foreign_table_name": "tax_rates",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "expense_claim_lines_expense_claim_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "expense_claim_id",
+              "foreign_table_name": "expense_claims",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "expense_claim_lines_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "expense_claim_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "account_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "date",
+              "data_type": "date",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "description",
+              "data_type": "text",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "receipt_reference",
+              "data_type": "character varying",
+              "character_maximum_length": 255,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_rate_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "tax_amount",
+              "data_type": "numeric",
+              "character_maximum_length": null,
+              "numeric_precision": 15,
+              "numeric_scale": 2,
+              "is_nullable": "YES",
+              "column_default": "0.00"
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 10,
+          "indexes": [
+            {
+              "indexname": "expense_claim_lines_pkey",
+              "indexdef": "CREATE UNIQUE INDEX expense_claim_lines_pkey ON public.expense_claim_lines USING btree (id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "expense_claim_lines_account_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "account_id",
+              "foreign_table_name": "accounts",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "expense_claim_lines_expense_claim_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "expense_claim_id",
+              "foreign_table_name": "expense_claims",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "expense_claim_lines_tax_rate_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "tax_rate_id",
+              "foreign_table_name": "tax_rates",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    },
+    {
+      "name": "audit_logs",
+      "environments": {
+        "local": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "user_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "table_name",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "record_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "action",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "old_values",
+              "data_type": "jsonb",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "new_values",
+              "data_type": "jsonb",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 9,
+          "indexes": [
+            {
+              "indexname": "audit_logs_pkey",
+              "indexdef": "CREATE UNIQUE INDEX audit_logs_pkey ON public.audit_logs USING btree (id)"
+            },
+            {
+              "indexname": "idx_audit_logs_organization",
+              "indexdef": "CREATE INDEX idx_audit_logs_organization ON public.audit_logs USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_audit_logs_table_record",
+              "indexdef": "CREATE INDEX idx_audit_logs_table_record ON public.audit_logs USING btree (table_name, record_id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "audit_logs_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "audit_logs_user_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "user_id",
+              "foreign_table_name": "users",
+              "foreign_column_name": "id"
+            }
+          ]
+        },
+        "production": {
+          "exists": true,
+          "columns": [
+            {
+              "column_name": "id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": "uuid_generate_v4()"
+            },
+            {
+              "column_name": "organization_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "user_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "table_name",
+              "data_type": "character varying",
+              "character_maximum_length": 100,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "record_id",
+              "data_type": "uuid",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "action",
+              "data_type": "character varying",
+              "character_maximum_length": 50,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "NO",
+              "column_default": null
+            },
+            {
+              "column_name": "old_values",
+              "data_type": "jsonb",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "new_values",
+              "data_type": "jsonb",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": null
+            },
+            {
+              "column_name": "created_at",
+              "data_type": "timestamp with time zone",
+              "character_maximum_length": null,
+              "numeric_precision": null,
+              "numeric_scale": null,
+              "is_nullable": "YES",
+              "column_default": "CURRENT_TIMESTAMP"
+            }
+          ],
+          "columnCount": 9,
+          "indexes": [
+            {
+              "indexname": "audit_logs_pkey",
+              "indexdef": "CREATE UNIQUE INDEX audit_logs_pkey ON public.audit_logs USING btree (id)"
+            },
+            {
+              "indexname": "idx_audit_logs_organization",
+              "indexdef": "CREATE INDEX idx_audit_logs_organization ON public.audit_logs USING btree (organization_id)"
+            },
+            {
+              "indexname": "idx_audit_logs_table_record",
+              "indexdef": "CREATE INDEX idx_audit_logs_table_record ON public.audit_logs USING btree (table_name, record_id)"
+            }
+          ],
+          "foreignKeys": [
+            {
+              "constraint_name": "audit_logs_organization_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "organization_id",
+              "foreign_table_name": "organizations",
+              "foreign_column_name": "id"
+            },
+            {
+              "constraint_name": "audit_logs_user_id_fkey",
+              "constraint_type": "FOREIGN KEY",
+              "column_name": "user_id",
+              "foreign_table_name": "users",
+              "foreign_column_name": "id"
+            }
+          ]
+        }
+      },
+      "differences": []
+    }
+  ],
+  "summary": {
+    "tablesChecked": 19,
+    "tablesWithDifferences": 0,
+    "totalDifferences": 0
+  }
+}
