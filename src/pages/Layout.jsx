@@ -207,6 +207,7 @@ export default function Layout() {
                 variant="ghost"
                 className="w-full justify-start text-gray-700 hover:text-gray-900 hover:bg-gray-100"
                 size="sm"
+                onClick={() => navigate('/settings')}
               >
                 <Settings className="mr-2 h-4 w-4" />
                 Settings

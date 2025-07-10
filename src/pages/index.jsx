@@ -40,6 +40,10 @@ import IncomeTaxReport from './tax-reports/IncomeTaxReport'
 import TaxLiabilityReport from './tax-reports/TaxLiabilityReport'
 import TaxAuditTrail from './tax-reports/TaxAuditTrail'
 import TaxRatesManagement from './tax-reports/TaxRatesManagement'
+import Settings from './settings/Settings'
+import DatabaseTables from './database/DatabaseTables'
+import TableView from './database/TableView'
+import SQLQuery from './database/SQLQuery'
 
 export default function AppRoutes() {
   return (
@@ -112,6 +116,12 @@ export default function AppRoutes() {
         <Route path="tax-reports/rates" element={<TaxRatesManagement />} />
         
         <Route path="accounts" element={<div className="p-6">Chart of Accounts Page</div>} />
+        <Route path="settings" element={<Settings />} />
+        
+        <Route path="database" element={<DatabaseTables />} />
+        <Route path="database/tables/:tableName" element={<TableView />} />
+        <Route path="database/query" element={<SQLQuery />} />
+        <Route path="database/migrations" element={<div className="p-6">Database Migrations Page</div>} />
       </Route>
     </Routes>
   )
